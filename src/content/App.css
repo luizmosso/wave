@@ -1,0 +1,438 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+    
+body{
+  margin: 0;
+  padding: 0;
+}
+
+.App{
+    height: 100vh;;
+}
+
+.login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: 'Roboto', sans-serif; 
+    margin: 0;
+    padding: 0;
+}
+.login .background{
+    -webkit-filter: blur(5px); /* Safari */
+    filter: blur(10px);
+    position: absolute;
+    background-image: url('./login_background.jpg');
+    background-size: 100% 100%;   
+    top: 0;
+    left:0; 
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}
+
+.login .box{
+    max-width: 600px;  
+    text-align: center;      
+}
+
+.login .title{
+    color: rgba(255, 255, 255, 0.8);       
+    font-size: 3em; 
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.login .subtitle{
+    color: white;
+    width: 70%;
+    margin: 0 auto;
+    font-size: 0.7em;
+    margin-bottom: 10px;
+    line-height: 20px;
+}
+
+.input-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input{
+    color: white;
+    width: 70%;
+    border-radius : 40px;   
+}
+
+.input:focus{
+    outline: none;
+}
+
+.input-text{
+    text-align: center;
+    background-color: transparent;
+    margin-bottom: 20px;       
+    border: 1px solid white; 
+    height: 40px;
+    font-size: 16px;
+}
+
+.input-password{
+    font-size: 25px;
+}
+
+.input-password::placeholder{
+    font-size: 16px;
+}
+
+.input-text::placeholder{
+    color: white;
+    opacity: 1;
+}
+
+.button{
+    background-color: #221044;
+    border: none;
+    height: 42px;
+    color: #d4e4f7;
+    cursor: pointer;
+}
+
+.button:active{
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #221044;
+}
+
+.main{
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #090314;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.main .main-title{
+    color: rgba(255, 255, 255, 0.8);       
+    font-size: 1.5em; 
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main .group-box{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.mainbox{
+    height: 50vw;
+    width: 50vw;
+    max-width: 200px;
+    max-height: 200px;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-size: 100% 100%;
+    cursor: pointer;
+}
+
+
+.mainbox:active{
+    height: 150px;
+    width: 150px;
+}
+
+.mainbox .label{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.familias{
+    background-color: #edeaf0;
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+}
+
+.navbar{
+    display: flex;
+    height: 50px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1em;
+    align-items: center;
+    box-shadow: 1px 3px 7px -1px rgba(102,102,102,0.8);
+}
+
+.navbar .img{
+    position: absolute;
+    top: 10px;
+    left: 5px;
+    cursor: pointer;
+}
+
+.navbar .img img{
+    height: 35px;
+    cursor: pointer;
+}
+
+.navbar .text{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar .text img{
+    height: 42px;
+}
+
+.list{
+    list-style-type: none;
+    margin: 0;
+    padding: 25px 20px 0 25px;
+}
+
+.list .listitem {
+    background-color: rgba(255, 255, 255, 0.8);  
+    border: 1px solid   #e2dfe6;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.list .listitem .left{
+    position: relative;
+    top: -10px;
+    left: -20px;
+    border: 3px solid #edeaf0;
+    border-radius: 45px;
+    width: 45px;
+    height: 45px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 12px;
+    background-color: rgba(42, 30, 43, 0.8);
+    color: rgba(255, 255, 255, 1);
+}
+
+.list .listitem .inside{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: -45px;
+    margin-left: 35px;
+}
+
+.list .listitem .inside .inside-left{
+    width: 70%;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+}
+
+.list .listitem .inside .inside-right{
+    width: 30%;
+    align-items: center;
+    display: flex;
+}
+
+.list .listitem .inside .up{
+    height: 40px;
+    font-weight: bold;
+    line-height: 40px;
+    margin-bottom: 10px;
+}
+.list .listitem .inside .down{
+    height: 30px;
+    font-size: 12px;
+
+    /* color: #fbe7ff */
+}
+
+.listItemButton{
+    width: 55px;
+    height: 27px;
+    border-radius: 35px;
+    border: none;
+    cursor: pointer;
+}
+
+.floatbutton{
+    background-color: rgb(66, 22, 102);
+    width: 80px;
+    height: 80px;
+    border-radius: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    box-shadow: -1px 4px 5px 0px rgba(99,99,99,0.8);
+    cursor: pointer;
+}
+
+.floatbutton img{
+    height: 23px;    
+}
+
+.addFamilia{
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+.react-swipe-container{
+    height: 100%;
+}
+
+.react-swipe-container > div{
+    height: 100%;
+}
+
+.addFamilia .navButtons *{
+    position: absolute;
+    top: 50vh;
+    height: 50px;
+    width: 50px;
+}
+
+.addFamilia .navButtons .prev{
+    left: 0;
+}
+
+.addFamilia .navButtons .next{
+    right: 0;
+}
+
+.addFamiliaBox{
+    height: 100%;    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.addFamiliaBox .input-box {
+    max-width: 600px;
+    width: 100%;
+}
+
+.addFamiliaBox .input-box label{
+    color: white;
+    font-size: 0.7em;
+}
+
+.addFamiliaBox .title{
+    position: absolute;
+    top: 40px;
+    font-size: 1.5em;
+    color: rgba(255,255,255, 0.9);
+}
+
+.addFamiliaBox .input{
+    color: white;
+    font-weight: bold;
+}
+
+
+.input-text::placeholder{
+    opacity: 0.9;
+    font-weight: lighter;
+}
+
+.addFamiliaBox.add-basic{
+    background-color: #5a1212;
+}
+
+.addFamiliaBox.add-basic .input-text{  
+    border: 2px solid rgb(253, 119, 119);
+}
+
+.addFamiliaBox.add-basic .input-text::placeholder{
+    color: rgb(206, 136, 136);
+}
+
+.addFamiliaBox.add-basic .pass{
+    color: #5a1212;
+}
+
+.addFamiliaBox.add-rent{
+    background-color: #125a24;
+}
+
+.addFamiliaBox.add-rent .input-text{  
+    border: 2px solid rgb(119, 253, 152);
+}
+
+.addFamiliaBox.add-rent .input-text::placeholder{
+    color: rgb(136, 206, 148);
+}
+
+.addFamiliaBox.add-rent .pass{
+    color: #125a24;
+}
+
+.addFamiliaBox.add-members{
+    background-color: #19125a;
+}
+
+.addFamiliaBox.add-members .input-text{  
+    border: 2px solid rgb(128, 119, 253);
+}
+
+.addFamiliaBox.add-members .input-text::placeholder{
+    color: rgb(136, 149, 206);
+}
+
+.addFamiliaBox.add-members .pass{
+    color: #19125a;
+}
+
+.addFamiliaBox.add-attendance{
+    background-color: #5a4312;
+}
+
+.addFamiliaBox.add-attendance .input-text{  
+    border: 2px solid rgb(253, 228, 119);
+}
+
+.addFamiliaBox.add-attendance .input-text::placeholder{
+    color: rgb(206, 193, 136);
+}
+
+.addFamiliaBox.add-attendance .pass{
+    color: #5a4312;
+}
+
+
+
+
+.pass{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 1.3em;
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
+    border-radius: 40px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
