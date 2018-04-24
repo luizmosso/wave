@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
+import InputDuo from '../../components/InputDuo';
 
 export default class AddRent extends Component {
+    constructor(){
+        super();
+        this.state = {benefits : []}
+    }
 
-    changeValue(field, event){
+    changeValue(field, event) {
         let campo = {};
         campo[field] = event.target.value;
         this.props.updateField(campo);
+    }
+
+    addBenefit(){
+        let benefits = this.state.benefits;
+        benefits.push(<InputDuo key={benefits.length + 1} hasLabel={benefits.length === 0 ? true : false}  label1="NOME" placeholder1="Bolsa Família" label2="VALOR" placeholder2="R$" />)
+        this.setState({benefits});
     }
 
     render() {
@@ -23,23 +34,17 @@ export default class AddRent extends Component {
             <div className="add-rent addFamiliaBox">
                 <div className="pass">2</div>
                 <div className="title">
-                    RENDA 
+                    RENDA
                 </div>
                 <div className="input-box">
-                    <label htmlFor="address">ENDEREÇO</label>
-                    <input className="input input-text" id="address" ref="address" type="text" placeholder="Rua das Margaridas, 150" onChange={this.changeValue.bind(this, 'endereco')} />
+                    <label htmlFor="rent">GANHOS MENSAIS</label>
+                    <input className="input input-text" id="rent" ref="rent" type="text" placeholder="R$" onChange={this.changeValue.bind(this, 'rendaMensal')} />
                 </div>
-                <div className="input-box">
-                    <label htmlFor="district">BAIRRO</label>
-                    <input className="input input-text" id="district" ref="district" type="text" placeholder="Urciano Lemos" onChange={this.changeValue.bind(this, 'bairro')} />
-                </div>
-                <div className="input-box">
-                    <label htmlFor="phone">TELEFONE</label>
-                    <input className="input input-text" id="phone" ref="phone" type="text" placeholder="3436624878" onChange={this.changeValue.bind(this, 'telefone')} />
-                </div>
-                <div className="input-box">
-                    <label htmlFor="document">DOCUMENTO</label>
-                    <input className="input input-text" id="document" ref="document" type="text" placeholder="CPF ou RG" onChange={this.changeValue.bind(this, 'documento')} />
+                <div className="add-box">
+                    <div className="header">BENEFÍCIOS <img onClick={this.addBenefit.bind(this)} alt="adicionar" src={require('../../content/plus_black.svg')} /></div>
+                    {
+                        this.state.benefits.map((benefit) => benefit)
+                    }
                 </div>
             </div>
         );

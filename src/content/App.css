@@ -419,8 +419,55 @@ body{
     color: #5a4312;
 }
 
+.add-box .header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255,255,255,0.8);
+    font-size: 1.3em;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
 
+.add-box .header img{
+    background-color: rgba(255,255,255,0.8);
+    padding: 7px 15px;
+    border-radius: 8px;
+    margin-left: 10px;
+    cursor: pointer;
+}
 
+.input-duo{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;    
+}
+
+.input-duo input{
+    margin-bottom: 0;
+}
+
+.input-duo label:first-child{
+    width: 50vw;
+}
+
+.input-duo label:last-child{
+    width: 20vw;
+}
+
+.input-duo input.first{
+    width: 50vw;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.input-duo input.last{
+    width: 20vw;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
 
 .pass{
     position: absolute;
