@@ -15,9 +15,26 @@ export default class AddRent extends Component {
 
     addBenefit(){
         let benefits = this.state.benefits;
-        benefits.push(<InputDuo key={benefits.length + 1} hasLabel={benefits.length === 0 ? true : false}  label1="NOME" placeholder1="Bolsa Família" label2="VALOR" placeholder2="R$" />)
+        benefits.push(
+            <InputDuo 
+                key={benefits.length + 1} 
+                id={benefits.length + 1} 
+                hasLabel={benefits.length === 0 ? true : false}  
+                label1="NOME" 
+                placeholder1="Bolsa Família" 
+                label2="VALOR" 
+                placeholder2="R$" 
+                onRemove={this.removeBenefit.bind(this)} 
+            />
+        )
         this.setState({benefits});
     }
+
+    removeBenefit(key){        
+        let benefits = this.state.benefits;
+        benefits.splice(key -1, 1);
+        this.setState({benefits});
+    }    
 
     render() {
 

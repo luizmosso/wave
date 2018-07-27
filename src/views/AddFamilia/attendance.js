@@ -17,6 +17,9 @@ export default class AddAttendance extends Component {
         //     grupo: 1,
         // };
 
+        const obs_style = {height: 200, borderRadius: 17};
+        const items_style = {height: 100, borderRadius: 17};
+
         return (
             <div className="add-attendance addFamiliaBox">
                 <div className="pass">4</div>
@@ -24,20 +27,16 @@ export default class AddAttendance extends Component {
                     ATENDIMENTO
                 </div>
                 <div className="input-box">
-                    <label htmlFor="address">ENDEREÇO</label>
-                    <input className="input input-text" id="address" ref="address" type="text" placeholder="Rua das Margaridas, 150" onChange={this.changeValue.bind(this, 'endereco')} />
+                    <label htmlFor="obs">OBSERVAÇÃO</label>
+                    <textarea style={obs_style} className="input input-text" id="obs" ref="obs" placeholder="Essa família possui um deficiente físico" onChange={this.changeValue.bind(this, 'observacao')} />                    
                 </div>
                 <div className="input-box">
-                    <label htmlFor="district">BAIRRO</label>
-                    <input className="input input-text" id="district" ref="district" type="text" placeholder="Urciano Lemos" onChange={this.changeValue.bind(this, 'bairro')} />
+                    <label htmlFor="time">TEMPO DE ATENDIMENTO</label>
+                    <input className="input input-text" id="time" ref="time" type="text" placeholder="6 meses" onChange={this.changeValue.bind(this, 'tempoAtendimento')} />
                 </div>
                 <div className="input-box">
-                    <label htmlFor="phone">TELEFONE</label>
-                    <input className="input input-text" id="phone" ref="phone" type="text" placeholder="3436624878" onChange={this.changeValue.bind(this, 'telefone')} />
-                </div>
-                <div className="input-box">
-                    <label htmlFor="document">DOCUMENTO</label>
-                    <input className="input input-text" id="document" ref="document" type="text" placeholder="CPF ou RG" onChange={this.changeValue.bind(this, 'documento')} />
+                    <label htmlFor="items">ITENS A SEREM DOADOS</label>
+                    <textarea style={items_style} className="input input-text" id="items" ref="items" placeholder="1 Cesta Básica, 1 pacote de fraldas" onChange={this.changeValue.bind(this, 'itensDoados')} />
                 </div>
             </div>
         );

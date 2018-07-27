@@ -1,11 +1,41 @@
 import React, { Component } from 'react';
+import InputTrio from '../../components/InputTrio';
 
 export default class AddMembers extends Component {
+    constructor(){
+        super();
+        this.state = {members : []}
+    }
 
     changeValue(field, event){
         let campo = {};
         campo[field] = event.target.value;
         this.props.updateField(campo);
+    }
+
+    addMember(){
+        let members = this.state.members;
+        members.push(
+            <InputTrio 
+                key={members.length + 1} 
+                id={members.length + 1} 
+                hasLabel={members.length === 0 ? true : false}  
+                label1="NOME" 
+                placeholder1="José da Silva" 
+                label2="NASCIMENTO" 
+                placeholder2="01/01/1990"
+                placeholder3="Ensino Fundamental Incompleto"
+                onRemove={this.removeMember.bind(this)} 
+            />
+        );
+
+        this.setState({members});
+    }
+
+    removeMember(key){        
+        let members = this.state.members;
+        members.splice(key -1, 1);
+        this.setState({members});
     }
 
     render() {
@@ -25,21 +55,11 @@ export default class AddMembers extends Component {
                 <div className="title">
                     MEMBROS 
                 </div>
-                <div className="input-box">
-                    <label htmlFor="address">ENDEREÇO</label>
-                    <input className="input input-text" id="address" ref="address" type="text" placeholder="Rua das Margaridas, 150" onChange={this.changeValue.bind(this, 'endereco')} />
-                </div>
-                <div className="input-box">
-                    <label htmlFor="district">BAIRRO</label>
-                    <input className="input input-text" id="district" ref="district" type="text" placeholder="Urciano Lemos" onChange={this.changeValue.bind(this, 'bairro')} />
-                </div>
-                <div className="input-box">
-                    <label htmlFor="phone">TELEFONE</label>
-                    <input className="input input-text" id="phone" ref="phone" type="text" placeholder="3436624878" onChange={this.changeValue.bind(this, 'telefone')} />
-                </div>
-                <div className="input-box">
-                    <label htmlFor="document">DOCUMENTO</label>
-                    <input className="input input-text" id="document" ref="document" type="text" placeholder="CPF ou RG" onChange={this.changeValue.bind(this, 'documento')} />
+                <div className="add-box">
+                    <div className="header">NOVO MEMBRO <img onClick={this.addMember.bind(this)} alt="adicionar" src={require('../../content/plus_black.svg')} /></div>
+                    {
+                        this.state.members.map((member) => member)
+                    }
                 </div>
             </div>
         );

@@ -249,6 +249,7 @@ body{
     width: 30%;
     align-items: center;
     display: flex;
+    justify-content: center;
 }
 
 .list .listitem .inside .up{
@@ -330,6 +331,7 @@ body{
 .addFamiliaBox .input-box {
     max-width: 600px;
     width: 100%;
+    margin-top: 10px;
 }
 
 .addFamiliaBox .input-box label{
@@ -345,8 +347,7 @@ body{
 }
 
 .addFamiliaBox .input{
-    color: white;
-    font-weight: bold;
+    color: white;    
 }
 
 
@@ -419,6 +420,19 @@ body{
     color: #5a4312;
 }
 
+.add-box{
+    max-height: 80vh;
+    overflow-y: auto;    
+}
+
+.add-rent .add-box {
+    max-height: 60vh;
+}
+
+.add-members .add-box {
+    margin-top: 10vh;
+}
+
 .add-box .header{
     display: flex;
     justify-content: center;
@@ -437,7 +451,7 @@ body{
     cursor: pointer;
 }
 
-.input-duo{
+.input-duo, .input-trio{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -445,28 +459,80 @@ body{
     justify-content: center;    
 }
 
-.input-duo input{
+.input-duo input, .input-trio input{
     margin-bottom: 0;
 }
 
-.input-duo label:first-child{
-    width: 50vw;
+.input-duo label:first-child, .input-trio label.first{
+    width: 60%;
+}
+
+.input-trio label.first{
+    text-align: center;
 }
 
 .input-duo label:last-child{
-    width: 20vw;
+    width: 30%;
 }
 
-.input-duo input.first{
-    width: 50vw;
+.input-trio label.last{
+    width: 30%;
+}
+
+.input-duo input.first, .input-trio .input.first{
+    width: 60%;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
 
-.input-duo input.last{
-    width: 20vw;
+.input-trio .input.first{
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 16px;
+}
+
+.input-trio .input.last{
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 16px;
+    width: 30% !important;
+}
+
+.input-trio .input.third{
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    width: 90.4%;
+    margin-top: -2px;
+}
+
+.input-duo input.last, .input-trio .input.last{
+    width: 30%;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+    margin-left: -2px;
+}
+
+.input-box{
+    position: relative;
+}
+
+.input-box .close{
+    position: absolute;
+    width: 21px;
+    height: 20px;
+    bottom: 5px;
+    right: 30px;
+    font-size: 20px;
+    padding-bottom: 1px;
+    font-weight: bold;
+    margin-top: 25px;
+    background-color: rgba(255,255,255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+    transform: rotate(45deg);
 }
 
 .pass{
@@ -482,4 +548,10 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+    .input-box .close{
+        right: 20px;
+    }
 }
