@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import AddView from '../../components/AddView';
 import InputDuo from '../../components/InputDuo';
 
 export default class AddRent extends Component {
-    constructor(){
+    constructor() {
         super();
-        this.state = {benefits : []}
+        this.state = { benefits: [] }
     }
 
     changeValue(field, event) {
@@ -13,28 +14,28 @@ export default class AddRent extends Component {
         this.props.updateField(campo);
     }
 
-    addBenefit(){
+    addBenefit() {
         let benefits = this.state.benefits;
         benefits.push(
-            <InputDuo 
-                key={benefits.length + 1} 
-                id={benefits.length + 1} 
-                hasLabel={benefits.length === 0 ? true : false}  
-                label1="NOME" 
-                placeholder1="Bolsa Família" 
-                label2="VALOR" 
-                placeholder2="R$" 
-                onRemove={this.removeBenefit.bind(this)} 
+            <InputDuo
+                key={benefits.length + 1}
+                id={benefits.length + 1}
+                hasLabel={benefits.length === 0 ? true : false}
+                label1="NOME"
+                placeholder1="Bolsa Família"
+                label2="VALOR"
+                placeholder2="R$"
+                onRemove={this.removeBenefit.bind(this)}
             />
         )
-        this.setState({benefits});
+        this.setState({ benefits });
     }
 
-    removeBenefit(key){        
+    removeBenefit(key) {
         let benefits = this.state.benefits;
-        benefits.splice(key -1, 1);
-        this.setState({benefits});
-    }    
+        benefits.splice(key - 1, 1);
+        this.setState({ benefits });
+    }
 
     render() {
 
@@ -48,11 +49,7 @@ export default class AddRent extends Component {
         // };
 
         return (
-            <div className="add-rent addFamiliaBox">
-                <div className="pass">2</div>
-                <div className="title">
-                    RENDA
-                </div>
+            <AddView history={this.props.history} className="add-rent" number="2" title="RENDA" hasButton={this.props.hasSaveButton} buttonClass="green">
                 <div className="input-box">
                     <label htmlFor="rent">GANHOS MENSAIS</label>
                     <input className="input input-text" id="rent" ref="rent" type="text" placeholder="R$" onChange={this.changeValue.bind(this, 'rendaMensal')} />
@@ -63,7 +60,7 @@ export default class AddRent extends Component {
                         this.state.benefits.map((benefit) => benefit)
                     }
                 </div>
-            </div>
+            </AddView>
         );
     }
 }

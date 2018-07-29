@@ -56,20 +56,22 @@ export default class AddFamilia extends Component {
     }
 
     render() {
+
+        const hasButton = this.props.history.hash !== null ? true : false;
         return (
             <div className="addFamilia">
                 <ReactSwipe ref={reactSwipe => this.reactSwipe = reactSwipe} className="carousel" swipeOptions={{ continuous: false }}>
                     <div style={{ height: '100%' }}>
-                        <AddBasic updateField={this.updateField.bind(this)} />
+                        <AddBasic history={this.props.history} updateField={this.updateField.bind(this)} hasSaveButton={hasButton} />
                     </div>
                     <div style={{ height: '100%' }}>
-                        <AddRent updateField={this.updateField.bind(this)} />
+                        <AddRent history={this.props.history} updateField={this.updateField.bind(this)} hasSaveButton={hasButton} />
                     </div>
                     <div style={{ height: '100%' }}>
-                        <AddMembers updateField={this.updateField.bind(this)} />
+                        <AddMembers history={this.props.history} updateField={this.updateField.bind(this)} hasSaveButton={hasButton} />
                     </div>
                     <div style={{ height: '100%' }}>
-                        <AddAttendance updateField={this.updateField.bind(this)} />
+                        <AddAttendance history={this.props.history} updateField={this.updateField.bind(this)} hasSaveButton={true} />
                     </div>
                 </ReactSwipe>
 

@@ -320,7 +320,7 @@ body{
     right: 0;
 }
 
-.addFamiliaBox{
+.addView{
     height: 100%;    
     display: flex;
     flex-direction: column;
@@ -328,25 +328,29 @@ body{
     align-items: center;
 }
 
-.addFamiliaBox .input-box {
+.addView .input-box {
     max-width: 600px;
     width: 100%;
     margin-top: 10px;
 }
 
-.addFamiliaBox .input-box label{
+.addView .input-box label{
     color: white;
     font-size: 0.7em;
 }
 
-.addFamiliaBox .title{
+.addView .title{
     position: absolute;
     top: 40px;
     font-size: 1.5em;
     color: rgba(255,255,255, 0.9);
 }
 
-.addFamiliaBox .input{
+.addView .close{
+
+}
+
+.addView .input{
     color: white;    
 }
 
@@ -356,81 +360,73 @@ body{
     font-weight: lighter;
 }
 
-.addFamiliaBox.add-basic{
+.addView.add-basic{
     background-color: #5a1212;
 }
 
-.addFamiliaBox.add-basic .input-text{  
+.addView.add-basic .input-text{  
     border: 2px solid rgb(253, 119, 119);
 }
 
-.addFamiliaBox.add-basic .input-text::placeholder{
+.addView.add-basic .input-text::placeholder{
     color: rgb(206, 136, 136);
 }
 
-.addFamiliaBox.add-basic .pass{
+.addView.add-basic .pass{
     color: #5a1212;
 }
 
-.addFamiliaBox.add-rent{
+.addView.add-rent{
     background-color: #125a24;
 }
 
-.addFamiliaBox.add-rent .input-text{  
+.addView.add-rent .input-text{  
     border: 2px solid rgb(119, 253, 152);
 }
 
-.addFamiliaBox.add-rent .input-text::placeholder{
+.addView.add-rent .input-text::placeholder{
     color: rgb(136, 206, 148);
 }
 
-.addFamiliaBox.add-rent .pass{
+.addView.add-rent .pass{
     color: #125a24;
 }
 
-.addFamiliaBox.add-members{
+.addView.add-members{
     background-color: #19125a;
 }
 
-.addFamiliaBox.add-members .input-text{  
+.addView.add-members .input-text{  
     border: 2px solid rgb(128, 119, 253);
 }
 
-.addFamiliaBox.add-members .input-text::placeholder{
+.addView.add-members .input-text::placeholder{
     color: rgb(136, 149, 206);
 }
 
-.addFamiliaBox.add-members .pass{
+.addView.add-members .pass{
     color: #19125a;
 }
 
-.addFamiliaBox.add-attendance{
+.addView.add-attendance{
     background-color: #5a4312;
 }
 
-.addFamiliaBox.add-attendance .input-text{  
+.addView.add-attendance .input-text{  
     border: 2px solid rgb(253, 228, 119);
 }
 
-.addFamiliaBox.add-attendance .input-text::placeholder{
+.addView.add-attendance .input-text::placeholder{
     color: rgb(206, 193, 136);
 }
 
-.addFamiliaBox.add-attendance .pass{
+.addView.add-attendance .pass{
     color: #5a4312;
 }
 
 .add-box{
-    max-height: 80vh;
-    overflow-y: auto;    
-}
-
-.add-rent .add-box {
     max-height: 60vh;
-}
-
-.add-members .add-box {
-    margin-top: 10vh;
+    overflow-y: auto;    
 }
 
 .add-box .header{
@@ -450,6 +446,116 @@ body{
     margin-left: 10px;
     cursor: pointer;
 }
+
+
+.actionButton{
+        -moz-box-shadow: 0px 3px 0px 0px #6b3579;
+        -webkit-box-shadow: 0px 3px 0px 0px #6b3579;
+        box-shadow: 0px 3px 0px 0px #6b3579;
+        background-color:#9b67af;
+        -moz-border-radius:6px;
+        -webkit-border-radius:6px;
+        border-radius:6px;
+        cursor:pointer;
+        color:#ffffff;
+        font-family:Arial;
+        font-size:17px;
+        padding:16px 31px;
+        text-decoration:none;
+        border: none;
+}
+    .actionButton:hover {
+        background-color:#6b3579;
+        -moz-box-shadow: 0px 3px 0px 0px #3a1c3a;
+        -webkit-box-shadow: 0px 3px 0px 0px #3a1c3a;
+        box-shadow: 0px 3px 0px 0px #3a1c3a;        
+    }
+
+    .actionButton:active {
+        -moz-box-shadow: 0px 1px 0px 0px #3a1c3a;
+        -webkit-box-shadow: 0px 1px 0px 0px #3a1c3a;
+        box-shadow: 0px 1px 0px 0px #3a1c3a;     
+    }
+
+    .actionButton.red{
+        -moz-box-shadow: 0px 3px 0px 0px #b14444 !important;
+        -webkit-box-shadow: 0px 3px 0px 0px #b14444 !important;
+        box-shadow: 0px 3px 0px 0px #b14444 !important;
+        background-color:rgb(253, 119, 119) !important;
+    }
+
+        actionButton.red:hover{
+            background-color:#b14444 !important;
+            -moz-box-shadow: 0px 3px 0px 0px #300707 !important;
+            -webkit-box-shadow: 0px 3px 0px 0px #300707 !important;
+            box-shadow: 0px 3px 0px 0px #300707 !important;    
+        }
+
+        .actionButton.red:active {
+            -moz-box-shadow: 0px 1px 0px 0px #300707 !important;
+            -webkit-box-shadow: 0px 1px 0px 0px #300707 !important;
+            box-shadow: 0px 1px 0px 0px #300707 !important;     
+        }  
+        
+    .actionButton.green{
+        -moz-box-shadow: 0px 3px 0px 0px #2a8d42 !important;
+        -webkit-box-shadow: 0px 3px 0px 0px #2a8d42 !important;
+        box-shadow: 0px 3px 0px 0px #2a8d42 !important;
+        background-color:#3bbd5c !important;
+    }
+
+        actionButton.green:hover{
+            background-color:#2a8d42 !important;
+            -moz-box-shadow: 0px 3px 0px 0px #083814 !important;
+            -webkit-box-shadow: 0px 3px 0px 0px #083814 !important;
+            box-shadow: 0px 3px 0px 0px #083814 !important;    
+        }
+
+        .actionButton.green:active {
+            -moz-box-shadow: 0px 1px 0px 0px #083814 !important;
+            -webkit-box-shadow: 0px 1px 0px 0px #083814 !important;
+            box-shadow: 0px 1px 0px 0px #083814 !important;     
+        } 
+            
+    .actionButton.blue{
+        -moz-box-shadow: 0px 3px 0px 0px #4c3ec4 !important;
+        -webkit-box-shadow: 0px 3px 0px 0px #4c3ec4 !important;
+        box-shadow: 0px 3px 0px 0px #4c3ec4 !important;
+        background-color:#7465fc !important;
+    }
+
+        actionButton.blue:hover{
+            background-color:#4c3ec4 !important;
+            -moz-box-shadow: 0px 3px 0px 0px #231885 !important;
+            -webkit-box-shadow: 0px 3px 0px 0px #231885 !important;
+            box-shadow: 0px 3px 0px 0px #231885 !important;    
+        }
+
+        .actionButton.blue:active {
+            -moz-box-shadow: 0px 1px 0px 0px #231885 !important;
+            -webkit-box-shadow: 0px 1px 0px 0px #231885 !important;
+            box-shadow: 0px 1px 0px 0px #231885 !important;     
+        }                 
+
+    .actionButton.beige{
+        -moz-box-shadow: 0px 3px 0px 0px #ad8630 !important;
+        -webkit-box-shadow: 0px 3px 0px 0px #ad8630 !important;
+        box-shadow: 0px 3px 0px 0px #ad8630 !important;
+        background-color:#eec366 !important;
+    }
+
+        actionButton.beige:hover{
+            background-color:#ad8630 !important;
+            -moz-box-shadow: 0px 3px 0px 0px #795b1c !important;
+            -webkit-box-shadow: 0px 3px 0px 0px #795b1c !important;
+            box-shadow: 0px 3px 0px 0px #795b1c !important;    
+        }
+
+        .actionButton.beige:active {
+            -moz-box-shadow: 0px 1px 0px 0px #795b1c !important;
+            -webkit-box-shadow: 0px 1px 0px 0px #795b1c !important;
+            box-shadow: 0px 1px 0px 0px #795b1c !important;     
+        } 
 
 .input-duo, .input-trio{
     display: flex;
@@ -548,6 +654,20 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.close{
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 1.7em;
+    color: white;
+    font-weight: bold;
+    transform: rotate(45deg);
+}
+
+textarea:focus, input:focus{
+    outline: none;
 }
 
 @media only screen and (max-width: 600px) {

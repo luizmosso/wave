@@ -9,15 +9,27 @@ export default class Familias extends Component {
 
     constructor() {
         super();
-
-        const Button = <ListItemButton color="#fbe7ff" backgroundColor="#c688d3" label="Info" />
+        
         this.familias = [
-            { left: 'F01', up: 'Maria Abadia da Luz', down: 'Rua das Margaridas 180 - Urciano Lemos', right: Button, active: true },
-            { left: 'F02', up: 'Maria Abadia da Luz', down: 'Rua das Margaridas 180 - Urciano Lemos', right: Button, active: false },
-            { left: 'F04', up: 'Maria Abadia da Luz', down: 'Rua das Margaridas 180 - Urciano Lemos', right: Button, active: true },
-            { left: 'F05', up: 'Maria Abadia da Luz', down: 'Rua das Margaridas 180 - Urciano Lemos', right: Button, active: false },
-            { left: 'F06', up: 'Maria Abadia da Luz', down: 'Rua das Margaridas 180 - Urciano Lemos', right: Button, active: true },
-        ]
+            {left: 'F01', up: 'Maria Abadia da Luz', down: 'Rua das Margaridas 180 - Urciano Lemos', right: null, active: true },
+            {left: 'F02', up: 'Maria Abadia da Luz', down: 'Rua das Margaridas 180 - Urciano Lemos', right: null, active: true },
+            {left: 'F03', up: 'Maria Abadia da Luz', down: 'Rua das Margaridas 180 - Urciano Lemos', right: null, active: true },
+            {left: 'F04', up: 'Maria Abadia da Luz', down: 'Rua das Margaridas 180 - Urciano Lemos', right: null, active: true },
+            {left: 'F05', up: 'Maria Abadia da Luz', down: 'Rua das Margaridas 180 - Urciano Lemos', right: null, active: true },
+            {left: 'F06', up: 'Maria Abadia da Luz', down: 'Rua das Margaridas 180 - Urciano Lemos', right: null, active: true }
+        ];
+
+        this.onListItemButtonClick = this.onListItemButtonClick.bind(this);
+    }
+
+    componentDidMount(){        
+        this.familias.forEach((familia) => {
+            familia.right = <ListItemButton color="#fbe7ff" backgroundColor="#c688d3" label="Info" onClick={this.onListItemButtonClick('F04')} />
+        });
+    }
+
+    onListItemButtonClick(id){        
+        // this.props.history.push(`/familias/add#${id}`);
     }
 
     back(){

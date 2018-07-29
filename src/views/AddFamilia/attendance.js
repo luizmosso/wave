@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AddView from '../../components/AddView';
 
 export default class AddAttendance extends Component {
 
@@ -17,18 +18,14 @@ export default class AddAttendance extends Component {
         //     grupo: 1,
         // };
 
-        const obs_style = {height: 200, borderRadius: 17};
-        const items_style = {height: 100, borderRadius: 17};
+        const obs_style = { height: 150, borderRadius: 17 };
+        const items_style = { height: 100, borderRadius: 17 };
 
         return (
-            <div className="add-attendance addFamiliaBox">
-                <div className="pass">4</div>
-                <div className="title">
-                    ATENDIMENTO
-                </div>
+            <AddView history={this.props.history} className="add-attendance" number="4" title="ATENDIMENTO" hasButton={this.props.hasSaveButton} buttonClass="beige">
                 <div className="input-box">
                     <label htmlFor="obs">OBSERVAÇÃO</label>
-                    <textarea style={obs_style} className="input input-text" id="obs" ref="obs" placeholder="Essa família possui um deficiente físico" onChange={this.changeValue.bind(this, 'observacao')} />                    
+                    <textarea style={obs_style} className="input input-text" id="obs" ref="obs" placeholder="Essa família possui um deficiente físico" onChange={this.changeValue.bind(this, 'observacao')} />
                 </div>
                 <div className="input-box">
                     <label htmlFor="time">TEMPO DE ATENDIMENTO</label>
@@ -38,7 +35,7 @@ export default class AddAttendance extends Component {
                     <label htmlFor="items">ITENS A SEREM DOADOS</label>
                     <textarea style={items_style} className="input input-text" id="items" ref="items" placeholder="1 Cesta Básica, 1 pacote de fraldas" onChange={this.changeValue.bind(this, 'itensDoados')} />
                 </div>
-            </div>
+            </AddView>
         );
     }
 }
