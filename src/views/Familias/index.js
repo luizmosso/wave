@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import List from '../../components/List';
 import NavBar from '../../components/NavBar';
 import ListItemButton from '../../components/ListItemButton';
@@ -18,30 +19,25 @@ export default class Familias extends Component {
             {left: 'F05', up: 'Maria Abadia da Luz', down: 'Rua das Margaridas 180 - Urciano Lemos', right: null, active: true },
             {left: 'F06', up: 'Maria Abadia da Luz', down: 'Rua das Margaridas 180 - Urciano Lemos', right: null, active: true }
         ];
-
-        this.onListItemButtonClick = this.onListItemButtonClick.bind(this);
     }
 
-    componentDidMount(){        
+    componentWillMount(){        
         this.familias.forEach((familia) => {
-            familia.right = <ListItemButton color="#fbe7ff" backgroundColor="#c688d3" label="Info" onClick={this.onListItemButtonClick('F04')} />
+            familia.right = 
+            (
+                <Link to={`/familias/add/${familia.left}`}>
+                    <ListItemButton color="#fbe7ff" backgroundColor="#c688d3" label="Info" />
+                </Link>
+            )
         });
-    }
-
-    onListItemButtonClick(id){        
-        // this.props.history.push(`/familias/add#${id}`);
-    }
-
-    back(){
-        this.props.history.push('/');
     }
 
     render() {
         return (
             <div className="familias container">
-                <NavBar history={this.props.history} title="FAMÍLIAS" image={require('../../content/family_icon.svg')} backColor="#421666" />
+                <NavBar title="FAMÍLIAS" image={require('../../content/family_icon.svg')} backColor="#421666" />
                 <List items={this.familias} />
-                <FloatButton history={this.props.history} icon={require('../../content/plus.svg')} backColor="#421666" route="/familias/add" />
+                <FloatButton icon={require('../../content/plus.svg')} backColor="#421666" route="/familias/add" />
             </div>
         );
     }

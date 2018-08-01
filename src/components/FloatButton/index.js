@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 
 export default class FloatButton extends Component {
-    click() {
-        this.props.history.push(this.props.route);
-    }
-
     render() {
         const styles = { backgroundColor: this.props.backColor };
 
         return (
-            <div className="floatbutton" style={styles} onClick={this.click.bind(this)} >
-                <img alt='floating' src={this.props.icon} />
-            </div>
+            <Link to={this.props.route}>
+                <div className="floatbutton" style={styles} >
+                    <img alt='floating' src={this.props.icon} />
+                </div>
+            </Link>
         );
     }
 }

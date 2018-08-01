@@ -8,7 +8,6 @@ export default class ListItemButton extends Component {
             color: this.props.color
         };
 
-
         return (
             <input className="listItemButton" type="button" value={this.props.label} style={styles} />
         );

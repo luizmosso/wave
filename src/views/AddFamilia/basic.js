@@ -11,7 +11,7 @@ export default class AddBasic extends Component {
 
     render() {
         return (
-            <AddView history={this.props.history} className="add-basic" number="1" title="DADOS BÁSICOS" hasButton={this.props.hasSaveButton} buttonClass="red">
+            <AddView className="add-basic" number="1" title="DADOS BÁSICOS" hasButton={this.props.hasSaveButton} buttonClass="red">
                 <div className="input-box">
                     <label htmlFor="address">ENDEREÇO</label>
                     <input className="input input-text" id="address" ref="address" type="text" placeholder="Rua das Margaridas, 150" onChange={this.changeValue.bind(this, 'endereco')} />

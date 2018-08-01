@@ -51,7 +51,7 @@ export default class AddMembers extends Component {
         // };
 
         return (
-            <AddView history={this.props.history} className="add-members" number="3" title="MEMBROS" hasButton={this.props.hasSaveButton} buttonClass="blue">
+            <AddView className="add-members" number="3" title="MEMBROS" hasButton={this.props.hasSaveButton} buttonClass="blue">
                 <div className="add-box">
                     <div className="header">NOVO MEMBRO <img onClick={this.addMember.bind(this)} alt="adicionar" src={require('../../content/plus_black.svg')} /></div>
                     {

@@ -49,7 +49,7 @@ export default class AddRent extends Component {
         // };
 
         return (
-            <AddView history={this.props.history} className="add-rent" number="2" title="RENDA" hasButton={this.props.hasSaveButton} buttonClass="green">
+            <AddView className="add-rent" number="2" title="RENDA" hasButton={this.props.hasSaveButton} buttonClass="green">
                 <div className="input-box">
                     <label htmlFor="rent">GANHOS MENSAIS</label>
                     <input className="input input-text" id="rent" ref="rent" type="text" placeholder="R$" onChange={this.changeValue.bind(this, 'rendaMensal')} />

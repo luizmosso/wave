@@ -18,12 +18,8 @@ export default class Login extends Component {
         const password = this.refs.password;
 
         if(this.checkData(user, password))
-            console.log('error');
-
-        this.props.history.push('/');  
+            this.props.history.push('/');  
     }
-
-
 
     render() {
         return (
