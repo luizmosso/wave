@@ -679,3 +679,23 @@ textarea:focus, input:focus{
 a{
     text-decoration: none;
 }
+
+.inputMic{
+    position: relative;    
+}
+
+    .inputMic i{
+        position: absolute;
+        right: 67px;
+        bottom: 29px;
+        color: rgba(255,255,255, 0.7);
+        cursor: pointer;
+    }
+
+        .inputMic i:hover{
+            color: #708ff3;
+        }
+
+        .inputMic i.active{
+            color: #708ff3;               
+        }
