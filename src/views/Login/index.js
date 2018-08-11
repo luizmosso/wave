@@ -20,8 +20,11 @@ export default class Login extends Component {
         const user = this.refs.use;
         const password = this.refs.password;
 
-        if (this.checkData(user, password))
+        if (this.checkData(user, password)){
+            localStorage.setItem("userData", "logged");
             this.props.history.push('/');
+        }
+            
     }
 
     startRecording() {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MainBox from '../../components/MainBox';
+import Logout from '../../components/Logout';
 
 export default class Main extends Component {
 
@@ -13,14 +14,21 @@ export default class Main extends Component {
             { route: "/eventos", key: 'eventos', label: 'Eventos', icon: require('../../content/events_icon.svg'), background: 'events.png' }
         ]
     }
-    
+
+    componentWillMount() {
+        console.log(this.props.history);
+        if (!localStorage.getItem("userData"))
+        this.props.history.push('/login');
+    }
+
     render() {
         return (
-            <div className="main container">
+            <div className="main container background">
                 <div className="main-title">Principal</div>
                 <div className="group-box">
                     {this.boxes.map((box) => <MainBox history={this.props.history} {...box} />)}
                 </div>
+                <Logout />
             </div>
         );
     }

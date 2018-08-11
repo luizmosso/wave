@@ -26,7 +26,7 @@ export default class Familias extends Component {
             familia.right = 
             (
                 <Link to={`/familias/add/${familia.left}`}>
-                    <ListItemButton color="#fbe7ff" backgroundColor="#c688d3" label="Info" />
+                    <ListItemButton color="#fbe7ff" backgroundColor="rgb(72, 142, 189)" label="Info" />
                 </Link>
             )
         });

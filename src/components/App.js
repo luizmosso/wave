@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { createBrowserHistory } from 'history';
 import '../content/App.css';
 import Login from '../views/Login';
 import Main from '../views/Main';
@@ -12,7 +13,7 @@ import AddFamilia from '../views/AddFamilia';
 class App extends Component {
   render() {
     return (
-      <Router>
+      <Router history={ createBrowserHistory }>
         <div className="App">
           <Switch>
             <Route exact path="/" component={Main} />
