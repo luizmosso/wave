@@ -24,6 +24,7 @@ export default class Main extends Component {
     render() {
         return (
             <div className="main container background">
+                <img src={require('../../content/wave.svg')} style={{width : 100}}/>
                 <div className="main-title">Principal</div>
                 <div className="group-box">
                     {this.boxes.map((box) => <MainBox history={this.props.history} {...box} />)}
