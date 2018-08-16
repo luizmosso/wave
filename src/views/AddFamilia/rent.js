@@ -38,18 +38,8 @@ export default class AddRent extends Component {
     }
 
     render() {
-
-        // const familia = {
-        //     // Renda
-        //     rendaMensal: 350.00,
-        //     beneficios: [
-        //         { nome: 'Bolsa Família', valor: 150.00 },
-        //         { nome: 'Pensão', valor: 80.00 },
-        //     ],
-        // };
-
         return (
-            <AddView className="add-rent" number="2" title="RENDA" hasButton={this.props.hasSaveButton} buttonClass="green">
+            <AddView className="add-rent" number="2" title="RENDA" hasButton={this.props.hasSaveButton} buttonClass="green" buttonClick={() => this.props.save()}>
                 <div className="input-box">
                     <label htmlFor="rent">GANHOS MENSAIS</label>
                     <input className="input input-text" id="rent" ref="rent" type="text" placeholder="R$" onChange={this.changeValue.bind(this, 'rendaMensal')} />

@@ -40,18 +40,8 @@ export default class AddMembers extends Component {
     }
 
     render() {
-
-        // const familia = {
-        //     // Membros
-        //     membros: [
-        //         { nome: 'José afonso Barbosa', nascimento: '11/11/1980', escolaridade: 'Ensino Fundamental Completo', responsavel: true },
-        //         { nome: 'Maria das Dores Barbosa', nascimento: '05/08/1975', escolaridade: 'Ensino Fundamental Incompleto', responsavel: false },
-        //         { nome: 'Cauã Barbosa da Silva', nascimento: '15/01/2005', escolaridade: null, responsavel: false },
-        //     ],
-        // };
-
         return (
-            <AddView className="add-members" number="3" title="MEMBROS" hasButton={this.props.hasSaveButton} buttonClass="blue">
+            <AddView className="add-members" number="3" title="MEMBROS" hasButton={this.props.hasSaveButton} buttonClass="blue" buttonClick={() => this.props.save()}>
                 <div className="add-box">
                     <div className="header">NOVO MEMBRO <img onClick={this.addMember.bind(this)} alt="adicionar" src={require('../../content/plus_black.svg')} /></div>
                     {

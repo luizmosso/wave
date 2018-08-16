@@ -1,56 +1,34 @@
 import React, { Component } from 'react';
-import InputMic from '../../components/InputMic';
-import SpeechRecognitionService from '../../SpeechRecognitionService';
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import * as loginActions from '../../actions/login';
+import * as notificationActions from '../../actions/notification';
 
-export default class Login extends Component {
-
-    constructor() {
-        super();
-        this.state = { recording: false, inputText: '' }
-        this.recognition = new SpeechRecognitionService();        
-    }
-
-    checkData(user, password) {
-        if (user === '' || password === '')
+class Login extends Component {
+    checkData(email, password) {
+        if (email === '' || password === '')
             return false;
         return true;
     }
 
     doLogin() {
-        const user = this.refs.use;
-        const password = this.refs.password;
+        const email = this.refs.email.value;
+        const password = this.refs.password.value;
 
-        if (this.checkData(user, password)){
-            localStorage.setItem("userData", "logged");
+        if (this.checkData(email, password))
+            this.props.doLogin(email, password);
+        else
+            this.props.notify(true, "error", "Favor digitar o e-mail e a senha");
+    }
+
+    componentWillReceiveProps() {
+        if (this.props.login.isLoginSuccess) {
             this.props.history.push('/');
         }
-            
     }
-
-    startRecording() {
-        this.recognition.onResult((inputText, isFinal) => {
-            if (isFinal)
-                this.setState({ inputText: this.state.inputText + inputText });
-        });
-        this.recognition.onEnd(() => {
-            this.setState({ recording: false });
-        });
-        this.recognition.start();
-        this.setState({ recording: true });
-    }
-
-    stopRecording = () => {
-        this.setState({ recording: false });
-        this.recognition.stop();
-    }
-
-    btnRecording_Click() {
-        if (this.state.recording) {
-            this.stopRecording();
-        }
-        else {
-            this.startRecording();
-        }
+    
+    componentWillMount(){
+        localStorage.removeItem("userData");
     }
 
     render() {
@@ -58,17 +36,10 @@ export default class Login extends Component {
             <div className="login container">
                 <div className="background"></div>
                 <div className="box">
+                    <img src={require('../../content/wave.svg')} style={{ width: 80 }} alt="wave" />
                     <p className="title">Wave </p>
-                    <p className="subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                    <InputMic
-                        ref="user"
-                        placeholder="Usuário"
-                        autoComplete="new-user"
-                        value={this.state.inputText}
-                        onMicClick={this.btnRecording_Click.bind(this)}
-                        onChange={(inputText) => this.setState({ inputText })}
-                        isChrome={this.recognition.isChrome()}
-                    />
+                    <p className="subtitle">A perseverança das ondas do mar, que fazem de cada recuo um ponto de partida para um novo avanço</p>
+                    <input className="input input-text" ref="email" type="email" placeholder="E-mail" autoComplete="new-user" />
                     <input className="input input-text input-password" ref="password" type="password" placeholder="Senha" autoComplete="new-password" />
                     <input className="input button" ref="submit" type="button" value="Login" onClick={this.doLogin.bind(this)} />
                 </div>
@@ -76,3 +47,17 @@ export default class Login extends Component {
         );
     }
 }
+
+const mapStateToProps = state => (
+    {
+        login: state.login,
+        notification: state.notification
+    });
+
+const mapDispatchToProps = dispatch => bindActionCreators(
+    {
+        ...loginActions,
+        ...notificationActions
+    }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

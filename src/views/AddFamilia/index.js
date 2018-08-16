@@ -1,45 +1,32 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import * as familiaActions from '../../actions/familia';
+import * as notificationActions from '../../actions/notification';
 import ReactSwipe from 'react-swipe';
 import AddBasic from './basic';
 import AddRent from './rent';
 import AddMembers from './members';
 import AddAttendance from './attendance';
 
-export default class AddFamilia extends Component {
+class AddFamilia extends Component {
     constructor() {
         super();
 
         this.state = {
-            // Dados básicos
-            endereco: 'Rua das Camelias, 189',
-            bairro: 'São Geraldo',
-            telefone: 999864154,
-            documento: '0847415624',
-
-            // Renda
-            rendaMensal: 350.00,
-            beneficios: [
-                { nome: 'Bolsa Família', valor: 150.00 },
-                { nome: 'Pensão', valor: 80.00 },
-            ],
-
-            // Membros
-            membros: [
-                { nome: 'José afonso Barbosa', nascimento: '11/11/1980', escolaridade: 'Ensino Fundamental Completo', responsavel: true },
-                { nome: 'Maria das Dores Barbosa', nascimento: '05/08/1975', escolaridade: 'Ensino Fundamental Incompleto', responsavel: false },
-                { nome: 'Cauã Barbosa da Silva', nascimento: '15/01/2005', escolaridade: null, responsavel: false },
-            ],
-
-            // Atendimento
-            observacao: 'Esta familia tem um deficiente físico e precisa de fraldas geriátricas',
-            tempoAtendimento: 6,
-            grupo: 1,
-
-            // Sistema
-            id: 'F01',
+            endereco: '',
+            bairro: '',
+            telefone: '',
+            documento: '',
+            renda: '',
+            beneficios: [],
+            membros: [],
+            observacao: '',
+            tempoAtendimento: '',
+            id: '',
             ativa: true,
-            dataCadastro: '01/01/2018',
-            dataAtivacao: ['01/01/2018', '01/01/2019']
+            dataCadastro: '',
+            dataAtivacao: []
         };
     }
 
@@ -55,22 +42,30 @@ export default class AddFamilia extends Component {
         this.setState(field);
     }
 
-    render() {             
+    save() {
+        this.props.insertFamilia(this.state, () => {
+            this.props.notify(true, "success", "Família Inserida com sucesso");
+            this.props.history.push('/familias');
+        })
+    }
+
+    render() {
+        console.log(this.state);
         const hasButton = this.props.match.params.id !== undefined ? true : false;
         return (
             <div className="addFamilia">
                 <ReactSwipe ref={reactSwipe => this.reactSwipe = reactSwipe} className="carousel" swipeOptions={{ continuous: false }}>
                     <div style={{ height: '100%' }}>
-                        <AddBasic updateField={this.updateField.bind(this)} hasSaveButton={hasButton} />
+                        <AddBasic updateField={this.updateField.bind(this)} save={this.save.bind(this)} hasSaveButton={hasButton} />
                     </div>
                     <div style={{ height: '100%' }}>
-                        <AddRent updateField={this.updateField.bind(this)} hasSaveButton={hasButton} />
+                        <AddRent updateField={this.updateField.bind(this)} save={this.save.bind(this)} hasSaveButton={hasButton} />
                     </div>
                     <div style={{ height: '100%' }}>
-                        <AddMembers updateField={this.updateField.bind(this)} hasSaveButton={hasButton} />
+                        <AddMembers updateField={this.updateField.bind(this)} save={this.save.bind(this)} hasSaveButton={hasButton} />
                     </div>
                     <div style={{ height: '100%' }}>
-                        <AddAttendance updateField={this.updateField.bind(this)} hasSaveButton={true} />
+                        <AddAttendance updateField={this.updateField.bind(this)} save={this.save.bind(this)} hasSaveButton={true} />
                     </div>
                 </ReactSwipe>
 
@@ -82,3 +77,17 @@ export default class AddFamilia extends Component {
         );
     }
 }
+
+const mapStateToProps = state => (
+    {
+        familia: state.familia,
+        notification: state.notification
+    });
+
+const mapDispatchToProps = dispatch => bindActionCreators(
+    {
+        ...familiaActions,
+        ...notificationActions
+    }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddFamilia);

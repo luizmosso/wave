@@ -22,7 +22,7 @@ export default class AddAttendance extends Component {
         const items_style = { height: 100, borderRadius: 17 };
 
         return (
-            <AddView className="add-attendance" number="4" title="ATENDIMENTO" hasButton={this.props.hasSaveButton} buttonClass="beige">
+            <AddView className="add-attendance" number="4" title="ATENDIMENTO" hasButton={this.props.hasSaveButton} buttonClass="beige" buttonClick={() => this.props.save()}>
                 <div className="input-box">
                     <label htmlFor="obs">OBSERVAÇÃO</label>
                     <textarea style={obs_style} className="input input-text" id="obs" ref="obs" placeholder="Essa família possui um deficiente físico" onChange={this.changeValue.bind(this, 'observacao')} />

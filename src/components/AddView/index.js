@@ -20,6 +20,7 @@ export default class AddView extends Component {
                         <ActionButton 
                             className={this.props.buttonClass}  
                             text="Salvar" 
+                            onClick={() => this.props.buttonClick()}
                             style={
                                 {                        
                                     width: '70%',
