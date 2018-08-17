@@ -1,9 +1,29 @@
 import React, { Component } from 'react';
+import InputMask from 'react-input-mask';
 
 export default class InputTrio extends Component {
 
-    onCloseClick(){
-        this.props.onRemove(this.refs.container.id);
+    onCloseClick() {
+        this.props.onRemove(
+            this.refs.container.id,
+            { 
+                id: this.props.id, 
+                nome: this.refs.input1.value, 
+                nascimento: this.refs.input2.value,
+                escolaridade: this.refs.input3.value 
+            }
+        );
+    }
+
+    onChange() {
+        this.props.onChange(
+            { 
+                id: this.props.id, 
+                nome: this.refs.input1.value, 
+                nascimento: this.refs.input2.value,
+                escolaridade: this.refs.input3.value 
+            }
+        );
     }
 
     render() {
@@ -17,9 +37,9 @@ export default class InputTrio extends Component {
                             <label key="2" className="last" htmlFor="member-nascimento">{this.props.label2}</label>                            
                         ]
                 }
-                <input className="input input-text first" type="text" placeholder={this.props.placeholder1} />
-                <input className="input input-text last" type="text" placeholder={this.props.placeholder2} />                
-                <input className="input input-text third" type="text" placeholder={this.props.placeholder3} />
+                <input ref="input1" onChange={this.onChange.bind(this)} className="input input-text first" type="text" placeholder={this.props.placeholder1} />
+                <InputMask mask="99/99/9999" maskChar={null} className="input input-text last" ref="input2" placeholder={this.props.placeholder2} onChange={this.onChange.bind(this)} />                                    
+                <input ref="input3" onChange={this.onChange.bind(this)} className="input input-text third" type="text" placeholder={this.props.placeholder3} />
             </div>
         );
     }

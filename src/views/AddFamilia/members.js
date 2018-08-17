@@ -5,7 +5,7 @@ import InputTrio from '../../components/InputTrio';
 export default class AddMembers extends Component {
     constructor() {
         super();
-        this.state = { members: [] }
+        this.state = { members: [], membersJSON : [] }
     }
 
     changeValue(field, event) {
@@ -27,16 +27,43 @@ export default class AddMembers extends Component {
                 placeholder2="01/01/1990"
                 placeholder3="Ensino Fundamental Incompleto"
                 onRemove={this.removeMember.bind(this)}
+                onChange={this.updateMemberObject.bind(this)}
             />
         );
 
-        this.setState({ members });
+        this.setState({ members });        
+        this.updateMemberObject();
     }
 
-    removeMember(key) {
+
+    updateMemberObject(obj, remove) {
+        if (obj != null) {
+            let newArr = this.state.membersJSON.map(a => { return { ...a } })
+
+            let found = newArr.find(a => a.id === obj.id);
+
+            if (remove) {
+                let index = newArr.indexOf(found);
+                newArr.splice(index, 1);
+            }
+            else if (found !== undefined) {
+                found.nome = obj.nome;
+                found.nascimento = obj.nascimento;
+                found.escolaridade = obj.escolaridade;
+            }
+            else
+                newArr.push(obj);
+
+            this.setState({ membersJSON: newArr });
+            this.props.updateField({ membros: newArr });
+        }
+    }
+
+    removeMember(key, obj) {
         let members = this.state.members;
         members.splice(key - 1, 1);
         this.setState({ members });
+        this.updateMemberObject(obj, true);
     }
 
     render() {

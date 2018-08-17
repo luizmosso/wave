@@ -16,16 +16,15 @@ class AddFamilia extends Component {
         this.state = {
             endereco: '',
             bairro: '',
-            telefone: '',
-            documento: '',
-            renda: '',
+            telefone: 0,
+            documento: 0,
+            renda: 0,
             beneficios: [],
             membros: [],
             observacao: '',
-            tempoAtendimento: '',
+            tempoAtendimento: 0,
             id: '',
             ativa: true,
-            dataCadastro: '',
             dataAtivacao: []
         };
     }
@@ -43,14 +42,34 @@ class AddFamilia extends Component {
     }
 
     save() {
-        this.props.insertFamilia(this.state, () => {
+        let familia = this.state; 
+        for (let b = 0; b < familia.beneficios.length; b++) {
+            let beneficio = familia.beneficios[b];
+            delete beneficio.id;
+        }
+
+        for (let m = 0; m < familia.membros.length; m++) {
+            let membro = familia.membros[m];
+            delete membro.id;
+            membro.nascimento = this.stringToDate(membro.nascimento);
+        }
+
+        this.props.insertFamilia(familia, () => {
             this.props.notify(true, "success", "Família Inserida com sucesso");
             this.props.history.push('/familias');
         })
     }
 
+    dateToString(date){
+        return `${date.getDate().toString().padStart(2, '0')}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getFullYear().toString()}`;
+    }
+
+    stringToDate(stringDate){
+        let arr = stringDate.split('/');
+        return new Date(arr[2], (parseInt(arr[1]) - 1).toString(), arr[0]);
+    }
+
     render() {
-        console.log(this.state);
         const hasButton = this.props.match.params.id !== undefined ? true : false;
         return (
             <div className="addFamilia">

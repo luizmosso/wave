@@ -1,9 +1,24 @@
 import React, { Component } from 'react';
+import CurrencyInput from 'react-currency-input';
 
 export default class InputDuo extends Component {
+    constructor(){
+        super();
+        this.state = {input2 : 0}
+    }
 
-    onCloseClick(){
-        this.props.onRemove(this.refs.container.id);
+    onCloseClick() {
+        this.props.onRemove(
+            this.refs.container.id,
+            { id: this.props.id, nome: this.refs.input1.value, valor: this.refs.input2.value }
+        );
+    }
+
+    onChange() {        
+        this.props.onChange(
+            { id: this.props.id, nome: this.refs.input1.value, valor: parseFloat(this.refs.input2.theInput.value) }
+        );
+        this.setState({input2: parseFloat(this.refs.input2.theInput.value)});
     }
 
     render() {
@@ -16,9 +31,9 @@ export default class InputDuo extends Component {
                             <label key="2" htmlFor="benefit-value">{this.props.label2}</label>
                         ]
                 }
-                <input className="input input-text first" type="text" placeholder={this.props.placeholder1} />
-                <input className="input input-text last" type="text" placeholder={this.props.placeholder2} />
-                <div className="close" onClick={this.onCloseClick.bind(this)}>+</div>  
+                <input ref="input1" onChange={this.onChange.bind(this)} className="input input-text first" type="text" placeholder={this.props.placeholder1} />
+                <CurrencyInput thousandSeparator="" value={this.state.input2} className="input input-text last" ref="input2" inputType="text" onChange={this.onChange.bind(this)} />                                    
+                <div className="close" onClick={this.onCloseClick.bind(this)}>+</div>
             </div>
         );
     }

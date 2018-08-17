@@ -50,7 +50,7 @@ export default class Search extends Component {
 
         return (
             <div className="search" style={style.container}>
-                <input type="text" style={style.input} onChange={(e) => this.search(e.target.value)} />
+                <input type="text" placeholder="Pesquisar" style={style.input} onChange={(e) => this.search(e.target.value)} />
                 <i className="material-icons" style={style.i}>search</i>
             </div>
         )
