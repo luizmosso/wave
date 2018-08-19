@@ -8,9 +8,10 @@ export default class Search extends Component {
             for (var i = 0; i < this.props.data.length; i++) {
                 for (let key in this.props.data[i]) {
                     if (typeof this.props.data[i][key] !== 'object') {
-                        if (this.props.data[i][key].toString().toLowerCase().indexOf(toSearch.toLowerCase()) !== -1) {
-                            results.push(this.props.data[i]);
-                        }
+                        if (this.props.data[i][key] !== undefined)
+                            if (this.props.data[i][key].toString().toLowerCase().indexOf(toSearch.toLowerCase()) !== -1) {
+                                results.push(this.props.data[i]);
+                            }
                     }
                 }
             }
@@ -32,7 +33,7 @@ export default class Search extends Component {
                 maxWidth: 600,
                 height: 30
             },
-            input: {                
+            input: {
                 border: 'none',
                 boxShadow: 'rgba(87, 86, 87, 0.4) 3px 8px 18px -11px',
                 padding: 10,
