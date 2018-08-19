@@ -67,12 +67,17 @@ export default class AddRent extends Component {
         this.updateBenefitObject(obj, true);
     }
 
+    componentWillReceiveProps(newProps){               
+        let renda = newProps.data.renda !== null ? newProps.data.renda.toString() : '';
+        this.setState({renda});
+    }
+
     render() {
         return (
             <AddView className="add-rent" number="2" title="RENDA" hasButton={this.props.hasSaveButton} buttonClass="green" buttonClick={() => this.props.save()}>
                 <div className="input-box">
                     <label htmlFor="rent">GANHOS MENSAIS</label>
-                    <CurrencyInput thousandSeparator="" value={this.state.renda} className="input input-text" id="rent" ref="rent" inputType="text" placeholder="R$" onChange={this.changeValue.bind(this, 'renda', true)} />                    
+                    <CurrencyInput thousandSeparator="" value={this.state.renda} className="input input-text" id="renda" ref="renda" inputType="text" placeholder="R$" onChange={this.changeValue.bind(this, 'renda', true)} />                    
                 </div>
                 <div className="add-box">
                     <div className="header">BENEFÍCIOS <img onClick={this.addBenefit.bind(this)} alt="adicionar" src={require('../../content/plus_black.svg')} /></div>

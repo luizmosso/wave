@@ -69,22 +69,37 @@ class AddFamilia extends Component {
         return new Date(arr[2], (parseInt(arr[1]) - 1).toString(), arr[0]);
     }
 
-    render() {
+    componentDidMount(){        
+        if(this.props.match.params.id){            
+            let familia = this.props.familia.familias.find(f => f.id === this.props.match.params.id);
+            
+            for (let b = 0; b < familia.beneficios.length; b++) {
+                familia.beneficios[b].id = b;                
+            }
+
+            for (let m = 0; m < familia.membros.length; m++) {
+                familia.membros[m].id = m;                
+            } 
+            this.setState(familia);
+        }
+    }
+
+    render() {        
         const hasButton = this.props.match.params.id !== undefined ? true : false;
         return (
             <div className="addFamilia">
                 <ReactSwipe ref={reactSwipe => this.reactSwipe = reactSwipe} className="carousel" swipeOptions={{ continuous: false }}>
                     <div style={{ height: '100%' }}>
-                        <AddBasic updateField={this.updateField.bind(this)} save={this.save.bind(this)} hasSaveButton={hasButton} />
+                        <AddBasic data={this.state} updateField={this.updateField.bind(this)} save={this.save.bind(this)} hasSaveButton={hasButton} />
                     </div>
                     <div style={{ height: '100%' }}>
-                        <AddRent updateField={this.updateField.bind(this)} save={this.save.bind(this)} hasSaveButton={hasButton} />
+                        <AddRent data={this.state} updateField={this.updateField.bind(this)} save={this.save.bind(this)} hasSaveButton={hasButton} />
                     </div>
                     <div style={{ height: '100%' }}>
-                        <AddMembers updateField={this.updateField.bind(this)} save={this.save.bind(this)} hasSaveButton={hasButton} />
+                        <AddMembers data={this.state} updateField={this.updateField.bind(this)} save={this.save.bind(this)} hasSaveButton={hasButton} />
                     </div>
                     <div style={{ height: '100%' }}>
-                        <AddAttendance updateField={this.updateField.bind(this)} save={this.save.bind(this)} hasSaveButton={true} />
+                        <AddAttendance data={this.state} updateField={this.updateField.bind(this)} save={this.save.bind(this)} hasSaveButton={true} />
                     </div>
                 </ReactSwipe>
 
