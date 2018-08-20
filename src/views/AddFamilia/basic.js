@@ -7,7 +7,6 @@ export default class AddBasic extends Component {
     changeValue(field, isNumber, event) {
         let campo = {};
         campo[field] = isNumber === true ? parseInt(event.target.value) : event.target.value;
-        console.log(campo[field]);
         this.props.updateField(campo);
     }
 

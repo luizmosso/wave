@@ -6,7 +6,7 @@ import InputDuo from '../../components/InputDuo';
 export default class AddRent extends Component {
     constructor() {
         super();
-        this.state = { renda: 0, benefits: [], benefitsJSON: [] }
+        this.state = { renda: 0, beneficios: [] }
     }
 
     changeValue(field, isCurrency, value) {
@@ -16,33 +16,16 @@ export default class AddRent extends Component {
         this.props.updateField(campo);
     }
 
-    addBenefit(value1, value2) {
-        let benefits = this.state.benefits;
-        benefits.push(
-            <InputDuo
-                key={benefits.length + 1}
-                id={benefits.length + 1}
-                hasLabel={benefits.length === 0 ? true : false}
-                label1="NOME"
-                placeholder1="Bolsa Família"
-                label2="VALOR"
-                placeholder2="R$"          
-                value1={value1}
-                value2={value2}  
-                onRemove={this.removeBenefit.bind(this)}
-                onChange={this.updateBenefitObject.bind(this)}
-            />
-        )
-        this.setState({ benefits });
-        this.updateBenefitObject();
+    addBenefit() {
+        let beneficios = this.state.beneficios;
+        let newBenefit = { nome: '', valor: '', id: beneficios.length };
+        this.updateBenefitObject(newBenefit);
     }
 
     updateBenefitObject(obj, remove) {
         if (obj != null) {
-            let newArr = this.state.benefitsJSON.map(a => { return { ...a } })
-
+            let newArr = this.state.beneficios.map(a => { return { ...a } })
             let found = newArr.find(a => a.id === obj.id);
-
             if (remove) {
                 let index = newArr.indexOf(found);
                 newArr.splice(index, 1);
@@ -54,24 +37,26 @@ export default class AddRent extends Component {
             else
                 newArr.push(obj);
 
-            this.setState({ benefitsJSON: newArr });
+            this.setState({ beneficios: newArr });
             this.props.updateField({ beneficios: newArr });
         }
     }
 
-    removeBenefit(key, obj) {
-        let benefits = this.state.benefits;
-        benefits.splice(key - 1, 1);
-        this.setState({ benefits });
-        this.updateBenefitObject(obj, true);
+    removeBenefit(key) {
+        let beneficio = this.state.beneficios.find(f => f.id === parseInt(key));
+        this.updateBenefitObject(beneficio, true);
     }
 
-    componentWillReceiveProps(newProps){               
-        let renda = newProps.data.renda !== null ? newProps.data.renda.toString() : '';
-        this.setState({renda});
-        newProps.data.beneficios.forEach(
-            beneficio => this.addBenefit(beneficio.nome, beneficio.valor)
-        );
+
+    componentWillReceiveProps(newProps) {
+        if (this.props.data.renda !== newProps.data.renda) {
+            let renda = newProps.data.renda !== null ? newProps.data.renda.toString() : '';
+            this.setState({ renda });
+        }
+
+        if (this.props.data.beneficios !== newProps.data.beneficios) {
+            this.setState({ beneficios: newProps.data.beneficios });
+        }
     }
 
     render() {
@@ -79,12 +64,27 @@ export default class AddRent extends Component {
             <AddView className="add-rent" number="2" title="RENDA" hasButton={this.props.hasSaveButton} buttonClass="green" buttonClick={() => this.props.save()}>
                 <div className="input-box">
                     <label htmlFor="rent">GANHOS MENSAIS</label>
-                    <CurrencyInput thousandSeparator="" value={this.state.renda} className="input input-text" id="renda" ref="renda" inputType="text" placeholder="R$" onChange={this.changeValue.bind(this, 'renda', true)} />                    
+                    <CurrencyInput thousandSeparator="" value={this.state.renda} className="input input-text" id="renda" ref="renda" inputType="text" placeholder="R$" onChange={this.changeValue.bind(this, 'renda', true)} />
                 </div>
                 <div className="add-box">
                     <div className="header">BENEFÍCIOS <img onClick={this.addBenefit.bind(this)} alt="adicionar" src={require('../../content/plus_black.svg')} /></div>
                     {
-                        this.state.benefits.map((benefit) => benefit)
+                        this.state.beneficios.length === 0 ? null :
+                            this.state.beneficios.map((beneficio) =>
+                                <InputDuo
+                                    key={beneficio.id}
+                                    id={beneficio.id}
+                                    hasLabel={beneficio.id === 0 ? true : false}
+                                    label1="NOME"
+                                    placeholder1="Bolsa Família"
+                                    label2="VALOR"
+                                    placeholder2="R$"
+                                    value1={beneficio.nome}
+                                    value2={beneficio.valor}
+                                    onRemove={this.removeBenefit.bind(this)}
+                                    onChange={this.updateBenefitObject.bind(this)}
+                                />
+                            )
                     }
                 </div>
             </AddView>

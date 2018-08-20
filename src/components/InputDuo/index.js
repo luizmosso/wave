@@ -8,10 +8,7 @@ export default class InputDuo extends Component {
     }
 
     onCloseClick() {
-        this.props.onRemove(
-            this.refs.container.id,
-            { id: this.props.id, nome: this.refs.input1.value, valor: this.refs.input2.value }
-        );
+        this.props.onRemove(this.refs.container.id);
     }
 
     onChange() {        

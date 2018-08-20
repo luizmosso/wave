@@ -4,15 +4,7 @@ import InputMask from 'react-input-mask';
 export default class InputTrio extends Component {
 
     onCloseClick() {
-        this.props.onRemove(
-            this.refs.container.id,
-            { 
-                id: this.props.id, 
-                nome: this.refs.input1.value, 
-                nascimento: this.refs.input2.value,
-                escolaridade: this.refs.input3.value 
-            }
-        );
+        this.props.onRemove(this.refs.container.id);
     }
 
     onChange() {

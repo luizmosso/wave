@@ -36,13 +36,13 @@ export function notify(notify, type, message) {
     if (notify) {
       if (type === "error") {
         dispatch(setError(true));
+        dispatch(setSuccess(false));
         dispatch(setMessage(message));
       }
       else {
-        if (type === "success") {
-          dispatch(setSuccess(true));
-          dispatch(setMessage(message));
-        }
+        dispatch(setSuccess(true));
+        dispatch(setError(false))
+        dispatch(setMessage(message));
       }
       dispatch(setNotify(true))
     }

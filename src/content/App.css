@@ -143,12 +143,6 @@ body{
     cursor: pointer;
 }
 
-
-.mainbox:active{
-    height: 150px;
-    width: 150px;
-}
-
 .mainbox .label{
   height: 100%;
   width: 100%;

@@ -6,9 +6,9 @@ import '../content/App.css';
 import Login from '../views/Login';
 import Main from '../views/Main';
 import Familias from '../views/Familias';
-import Doacoes from '../views/Doacoes';
-import Financeiro from '../views/Financeiro';
-import Eventos from '../views/Eventos';
+// import Doacoes from '../views/Doacoes';
+// import Financeiro from '../views/Financeiro';
+// import Eventos from '../views/Eventos';
 import AddFamilia from '../views/AddFamilia';
 import Notify from '../components/Notify';
 import store from '../store';
@@ -25,9 +25,12 @@ class App extends Component {
               <Route exact path="/familias" component={Familias} />
               <Route exact path="/familias/add" component={AddFamilia} />
               <Route exact path="/familias/add/:id" component={AddFamilia} />
-              <Route path="/doacoes" component={Doacoes} />
+              {/* <Route path="/doacoes" component={Doacoes} />
               <Route path="/financeiro" component={Financeiro} />
-              <Route path="/eventos" component={Eventos} />
+              <Route path="/eventos" component={Eventos} /> */}
+              <Route path="/doacoes" component={Main} />
+              <Route path="/financeiro" component={Main} />
+              <Route path="/eventos" component={Main} />
             </Switch>
             <Notify />
           </div>

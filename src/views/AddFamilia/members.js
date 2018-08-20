@@ -5,7 +5,7 @@ import InputTrio from '../../components/InputTrio';
 export default class AddMembers extends Component {
     constructor() {
         super();
-        this.state = { members: [], membersJSON : [] }
+        this.state = { membros: [] }
     }
 
     changeValue(field, event) {
@@ -14,37 +14,16 @@ export default class AddMembers extends Component {
         this.props.updateField(campo);
     }
 
-    addMember(nome, nascimento, escolaridade) {
-        let members = this.state.members;
-        members.push(
-            <InputTrio
-                key={members.length + 1}
-                id={members.length + 1}
-                hasLabel={members.length === 0 ? true : false}
-                label1="NOME"
-                placeholder1="José da Silva"
-                label2="NASCIMENTO"
-                placeholder2="01/01/1990"
-                placeholder3="Ensino Fundamental Incompleto"
-                value1={nome}
-                value2={nascimento}
-                value3={escolaridade}
-                onRemove={this.removeMember.bind(this)}
-                onChange={this.updateMemberObject.bind(this)}
-            />
-        );
-
-        this.setState({ members });        
-        this.updateMemberObject();
+    addMember() {
+        let membros = this.state.membros;
+        let newMember = { nome : '', nascimento : '', escolaridade: '', id: membros.length };        
+        this.updateMemberObject(newMember);        
     }
-
 
     updateMemberObject(obj, remove) {
         if (obj != null) {
-            let newArr = this.state.membersJSON.map(a => { return { ...a } })
-
+            let newArr = this.state.membros.map(a => { return { ...a } })
             let found = newArr.find(a => a.id === obj.id);
-
             if (remove) {
                 let index = newArr.indexOf(found);
                 newArr.splice(index, 1);
@@ -57,22 +36,20 @@ export default class AddMembers extends Component {
             else
                 newArr.push(obj);
 
-            this.setState({ membersJSON: newArr });
+            this.setState({ membros: newArr });
             this.props.updateField({ membros: newArr });
         }
     }
 
-    removeMember(key, obj) {
-        let members = this.state.members;
-        members.splice(key - 1, 1);
-        this.setState({ members });
-        this.updateMemberObject(obj, true);
+    removeMember(key) {
+        let membro = this.state.membros.find(f => f.id === parseInt(key));
+        this.updateMemberObject(membro, true);
     }
 
-    componentWillReceiveProps(newProps){               
-        newProps.data.membros.forEach(
-            membro => this.addMember(membro.nome, membro.nascimento, membro.escolaridade)
-        );
+    componentWillReceiveProps(newProps) {
+        if (this.props.data.membros !== newProps.data.membros) {
+            this.setState({ membros: newProps.data.membros });
+        }
     }
 
     render() {
@@ -81,7 +58,24 @@ export default class AddMembers extends Component {
                 <div className="add-box">
                     <div className="header">NOVO MEMBRO <img onClick={this.addMember.bind(this)} alt="adicionar" src={require('../../content/plus_black.svg')} /></div>
                     {
-                        this.state.members.map((member) => member)
+                        this.state.membros.length === 0 ? null :
+                            this.state.membros.map((membro) =>
+                                <InputTrio
+                                    key={membro.id}
+                                    id={membro.id}
+                                    hasLabel={membro.id === 0 ? true : false}
+                                    label1="NOME"
+                                    placeholder1="José da Silva"
+                                    label2="NASCIMENTO"
+                                    placeholder2="01/01/1990"
+                                    placeholder3="Ensino Fundamental Incompleto"
+                                    value1={membro.nome}
+                                    value2={membro.nascimento}
+                                    value3={membro.escolaridade}
+                                    onRemove={this.removeMember.bind(this)}
+                                    onChange={this.updateMemberObject.bind(this)}
+                                />
+                            )
                     }
                 </div>
             </AddView>
