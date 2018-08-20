@@ -10,14 +10,13 @@ export default class AddRent extends Component {
     }
 
     changeValue(field, isCurrency, value) {
-        console.log(value);
         let campo = {};
         campo[field] = isCurrency === true ? parseFloat(value) : value;
         this.setState(campo);
         this.props.updateField(campo);
     }
 
-    addBenefit() {
+    addBenefit(value1, value2) {
         let benefits = this.state.benefits;
         benefits.push(
             <InputDuo
@@ -27,9 +26,9 @@ export default class AddRent extends Component {
                 label1="NOME"
                 placeholder1="Bolsa Família"
                 label2="VALOR"
-                placeholder2="R$"
-                getValue1={(value) => value}
-                getValue2={(value) => value}
+                placeholder2="R$"          
+                value1={value1}
+                value2={value2}  
                 onRemove={this.removeBenefit.bind(this)}
                 onChange={this.updateBenefitObject.bind(this)}
             />
@@ -70,6 +69,9 @@ export default class AddRent extends Component {
     componentWillReceiveProps(newProps){               
         let renda = newProps.data.renda !== null ? newProps.data.renda.toString() : '';
         this.setState({renda});
+        newProps.data.beneficios.forEach(
+            beneficio => this.addBenefit(beneficio.nome, beneficio.valor)
+        );
     }
 
     render() {

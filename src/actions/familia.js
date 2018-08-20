@@ -60,3 +60,31 @@ export function insertFamilia(familia, callback){
       });
   }
 }
+
+export function updateFamilia(familia, callback){
+  return dispatch => {
+
+    const URL = `${process.env.REACT_APP_API_URL}/api/familia/${familia._id}`;
+    const HEADER = new Headers({
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    });
+    
+    fetch(URL, { method: "PUT", headers: HEADER, body: JSON.stringify(familia) })
+      .then(response => {        
+        if (response.status === 204)
+          throw new Error(response.statusText);
+        else
+          return response.json()
+      })
+      .then(familia => {
+        if (familia.error)
+          throw new Error(familia.error);       
+
+        callback();
+      })
+      .catch(err => {        
+        dispatch(notify(true, "error", err));
+      });
+  }
+}

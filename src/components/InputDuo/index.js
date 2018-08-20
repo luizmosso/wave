@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import CurrencyInput from 'react-currency-input';
 
 export default class InputDuo extends Component {
-    constructor(){
-        super();
-        this.state = {input2 : 0}
+    constructor(props){
+        super(props);
+        this.state = {input2 : this.props.value2 !== null ? parseFloat(this.props.value2) : 0}
     }
 
     onCloseClick() {
@@ -31,8 +31,22 @@ export default class InputDuo extends Component {
                             <label key="2" htmlFor="benefit-value">{this.props.label2}</label>
                         ]
                 }
-                <input ref="input1" onChange={this.onChange.bind(this)} className="input input-text first" type="text" placeholder={this.props.placeholder1} />
-                <CurrencyInput thousandSeparator="" value={this.state.input2} className="input input-text last" ref="input2" inputType="text" onChange={this.onChange.bind(this)} />                                    
+                <input 
+                    ref="input1" 
+                    onChange={this.onChange.bind(this)} 
+                    className="input input-text first" 
+                    type="text" 
+                    placeholder={this.props.placeholder1} 
+                    value={this.props.value1 != null ? this.props.value1 : ''} 
+                />
+                <CurrencyInput 
+                    thousandSeparator="" 
+                    value={this.state.input2} 
+                    className="input input-text last" 
+                    ref="input2" 
+                    inputType="text" 
+                    onChange={this.onChange.bind(this)} 
+                />                                    
                 <div className="close" onClick={this.onCloseClick.bind(this)}>+</div>
             </div>
         );

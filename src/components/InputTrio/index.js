@@ -37,9 +37,9 @@ export default class InputTrio extends Component {
                             <label key="2" className="last" htmlFor="member-nascimento">{this.props.label2}</label>                            
                         ]
                 }
-                <input ref="input1" onChange={this.onChange.bind(this)} className="input input-text first" type="text" placeholder={this.props.placeholder1} />
-                <InputMask mask="99/99/9999" maskChar={null} className="input input-text last" ref="input2" placeholder={this.props.placeholder2} onChange={this.onChange.bind(this)} />                                    
-                <input ref="input3" onChange={this.onChange.bind(this)} className="input input-text third" type="text" placeholder={this.props.placeholder3} />
+                <input value={this.props.value1 != null ? this.props.value1 : ''} ref="input1" onChange={this.onChange.bind(this)} className="input input-text first" type="text" placeholder={this.props.placeholder1} />
+                <InputMask value={this.props.value2 != null ? this.props.value2 : ''} mask="99/99/9999" maskChar={null} className="input input-text last" ref="input2" placeholder={this.props.placeholder2} onChange={this.onChange.bind(this)} />                                    
+                <input value={this.props.value3 != null ? this.props.value3 : ''} ref="input3" onChange={this.onChange.bind(this)} className="input input-text third" type="text" placeholder={this.props.placeholder3} />
             </div>
         );
     }

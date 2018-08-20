@@ -54,10 +54,18 @@ class AddFamilia extends Component {
             membro.nascimento = this.stringToDate(membro.nascimento);
         }
 
-        this.props.insertFamilia(familia, () => {
-            this.props.notify(true, "success", "Família Inserida com sucesso");
-            this.props.history.push('/familias');
-        })
+        if(familia._id){
+            this.props.updateFamilia(familia, () => {
+                this.props.notify(true, "success", "Família Atualizada com sucesso");
+                this.props.history.push('/familias');
+            })
+        }
+        else{
+            this.props.insertFamilia(familia, () => {
+                this.props.notify(true, "success", "Família Inserida com sucesso");
+                this.props.history.push('/familias');
+            })
+        }
     }
 
     dateToString(date){
@@ -78,7 +86,8 @@ class AddFamilia extends Component {
             }
 
             for (let m = 0; m < familia.membros.length; m++) {
-                familia.membros[m].id = m;                
+                familia.membros[m].id = m; 
+                familia.membros[m].nascimento = this.dateToString(new Date(familia.membros[m].nascimento));                              
             } 
             this.setState(familia);
         }

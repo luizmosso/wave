@@ -7,6 +7,7 @@ export default class AddBasic extends Component {
     changeValue(field, isNumber, event) {
         let campo = {};
         campo[field] = isNumber === true ? parseInt(event.target.value) : event.target.value;
+        console.log(campo[field]);
         this.props.updateField(campo);
     }
 
@@ -15,7 +16,7 @@ export default class AddBasic extends Component {
         this.refs.endereco.value = newProps.data.endereco;
         this.refs.bairro.value = newProps.data.bairro;
         this.refs.telefone.value = newProps.data.telefone !== null ? newProps.data.telefone.toString() : '';
-        this.refs.documento.value = newProps.data.documento;
+        this.refs.documento.value = newProps.data.documento !== null ? newProps.data.documento.toString() : '';
     }
 
     render() {

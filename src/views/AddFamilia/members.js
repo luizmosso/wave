@@ -14,7 +14,7 @@ export default class AddMembers extends Component {
         this.props.updateField(campo);
     }
 
-    addMember() {
+    addMember(nome, nascimento, escolaridade) {
         let members = this.state.members;
         members.push(
             <InputTrio
@@ -26,6 +26,9 @@ export default class AddMembers extends Component {
                 label2="NASCIMENTO"
                 placeholder2="01/01/1990"
                 placeholder3="Ensino Fundamental Incompleto"
+                value1={nome}
+                value2={nascimento}
+                value3={escolaridade}
                 onRemove={this.removeMember.bind(this)}
                 onChange={this.updateMemberObject.bind(this)}
             />
@@ -64,6 +67,12 @@ export default class AddMembers extends Component {
         members.splice(key - 1, 1);
         this.setState({ members });
         this.updateMemberObject(obj, true);
+    }
+
+    componentWillReceiveProps(newProps){               
+        newProps.data.membros.forEach(
+            membro => this.addMember(membro.nome, membro.nascimento, membro.escolaridade)
+        );
     }
 
     render() {
