@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Switch from 'rc-switch';
 import InputMask from 'react-input-mask';
 import AddView from '../../components/AddView';
 
@@ -10,17 +11,29 @@ export default class AddAttendance extends Component {
         this.props.updateField(campo);
     }
 
-    componentWillReceiveProps(newProps){                
+    switchChange(e) {
+        this.props.updateField({ ativo: e });
+    }
+
+    componentWillReceiveProps(newProps) {
         this.refs.observacao.value = newProps.data.observacao;
         this.refs.tempoAtendimento.value = newProps.data.tempoAtendimento !== null ? newProps.data.tempoAtendimento.toString() : '';
         this.refs.itensDoados.value = newProps.data.itensDoados;
+        this.refs.ativo.checked = newProps.data.ativo;
     }
 
     render() {
-        const obs_style = {  backgroundColor: '#A67313', height: 150, borderRadius: 17 };
-        const items_style = { height: 100, borderRadius: 17 };        
+        const obs_style = { backgroundColor: '#A67313', height: 150, borderRadius: 17 };
+        const items_style = { height: 100, borderRadius: 17 };
+        const switch_style = {
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'center',
+            marginTop: 0,
+            marginBottom: 15
+        }
 
-        return (            
+        return (
             <AddView className="add-attendance" number="4" title="ATENDIMENTO" hasButton={this.props.hasSaveButton} buttonClass="beige" buttonClick={() => this.props.save()}>
                 <div className="input-box">
                     <label htmlFor="observacao">OBSERVAÇÃO</label>
@@ -28,11 +41,15 @@ export default class AddAttendance extends Component {
                 </div>
                 <div className="input-box">
                     <label htmlFor="tempoAtendimento">TEMPO DE ATENDIMENTO</label>
-                    <InputMask mask="999999" maskChar={null} className="input input-text" id="tempoAtendimento" ref="tempoAtendimento" placeholder="em meses" onChange={this.changeValue.bind(this, 'tempoAtendimento', true)} />                                                        
+                    <InputMask mask="999999" maskChar={null} className="input input-text" id="tempoAtendimento" ref="tempoAtendimento" placeholder="em meses" onChange={this.changeValue.bind(this, 'tempoAtendimento', true)} />
                 </div>
                 <div className="input-box">
                     <label htmlFor="itensDoados">ITENS A SEREM DOADOS</label>
                     <textarea style={items_style} className="input input-text" id="itensDoados" ref="itensDoados" placeholder="1 Cesta Básica, 1 pacote de fraldas" onChange={this.changeValue.bind(this, 'itensDoados', false)} />
+                </div>
+                <div className="input-box" style={switch_style}>
+                    <label htmlFor="ativo" style={{ marginRight: 15 }}>SITUAÇÃO</label>
+                    <Switch ref="ativo" id="ativo" onChange={this.switchChange.bind(this)} checkedChildren={'ativa'} unCheckedChildren={'inativa'} />
                 </div>
             </AddView>
         );

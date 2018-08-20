@@ -24,7 +24,7 @@ class AddFamilia extends Component {
             observacao: '',
             tempoAtendimento: 0,
             id: '',
-            ativa: true,
+            ativo: true,
             dataAtivacao: []
         };
     }
@@ -127,7 +127,7 @@ class AddFamilia extends Component {
         }
     }
 
-    render() {
+    render() {        
         const hasButton = this.props.match.params.id !== undefined ? true : false;
         return (
             <div className="addFamilia">
