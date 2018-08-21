@@ -37,7 +37,7 @@ export default class AddBasic extends Component {
                 </div>
                 <div className="input-box">
                     <label htmlFor="telefone">TELEFONE</label>
-                    <InputMask mask="99999999999" maskChar={null} className="input input-text" id="telefone" ref="telefone" placeholder="(34)36624878" onChange={this.changeValue.bind(this, 'telefone', true)} />                    
+                    <InputMask mask="99999999999" maskChar={null} className="input input-text" id="telefone" ref="telefone" placeholder="3436624878" onChange={this.changeValue.bind(this, 'telefone', true)} />                    
                 </div>
                 <div className="input-box">
                     <label htmlFor="documento">DOCUMENTO</label>

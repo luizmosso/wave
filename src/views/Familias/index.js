@@ -38,7 +38,7 @@ class Familias extends Component {
                                 <ListItemButton color="#fbe7ff" backgroundColor="rgb(72, 142, 189)" label="Info" />
                             </Link>
                         ),
-                        active: familia.ativa
+                        active: familia.ativo
                     }
                 );
             }

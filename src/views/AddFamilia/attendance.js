@@ -18,8 +18,8 @@ export default class AddAttendance extends Component {
     componentWillReceiveProps(newProps) {
         this.refs.observacao.value = newProps.data.observacao;
         this.refs.tempoAtendimento.value = newProps.data.tempoAtendimento !== null ? newProps.data.tempoAtendimento.toString() : '';
-        this.refs.itensDoados.value = newProps.data.itensDoados;
-        this.refs.ativo.checked = newProps.data.ativo;
+        this.refs.itensDoados.value = newProps.data.itensDoados;        
+        this.refs.ativo.state.checked = newProps.data.ativo;     
     }
 
     render() {
@@ -30,7 +30,7 @@ export default class AddAttendance extends Component {
             flexDirection: 'row',
             justifyContent: 'center',
             marginTop: 0,
-            marginBottom: 15
+            marginBottom: 20
         }
 
         return (

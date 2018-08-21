@@ -19,7 +19,7 @@ export default class Search extends Component {
         else
             results = this.props.data;
 
-        results = results.filter((item, pos) => results.indexOf(item) == pos);
+        results = results.filter((item, pos) => results.indexOf(item) === pos);
         this.props.searched(results);
     }
 
