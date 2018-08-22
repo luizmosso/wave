@@ -36,7 +36,7 @@ class Login extends Component {
             <div className="login container">
                 <div className="background"></div>
                 <div className="box">
-                    <img src={require('../../content/wave.svg')} style={{ width: 80 }} alt="wave" />
+                    <img src={require('../../content/wave.svg')} style={{ width: '17vw', maxWidth: 80 }} alt="wave" />
                     <p className="title">Wave </p>
                     <p className="subtitle">A perseverança das ondas do mar, que fazem de cada recuo um ponto de partida para um novo avanço</p>
                     <input className="input input-text" ref="email" type="email" placeholder="E-mail" autoComplete="new-user" />

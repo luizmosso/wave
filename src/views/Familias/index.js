@@ -52,7 +52,7 @@ class Familias extends Component {
                 <NavBar title="FAMÍLIAS" image={require('../../content/family_icon.svg')} backColor="#421666" />
                 <Search searched={this.search.bind(this)} data={this.state.familias} />
                 <List items={this.state.searched} maxHeight={"75vh"} />
-                <FloatButton icon={require('../../content/plus.svg')} backColor="#421666" route="/familias/add" />
+                <FloatButton icon={require('../../content/plus.svg')} backColor="white" route="/familias/add" />
             </div>
         );
     }

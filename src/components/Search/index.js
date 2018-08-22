@@ -26,34 +26,44 @@ export default class Search extends Component {
     render() {
         const style = {
             container: {
-                textAlign: 'center',
-                marginTop: 10,
-                marginBottom: 20,
                 position: 'relative',
-                width: '100%',
-                maxWidth: 600,
-                height: 30
+                width: '100%',                
+                marginTop: '4vh',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
             },
-            input: {
+            input: {             
+                width: '100%',
+                maxWidth: 450,
+                height: '5vh',
+                maxHeight: 30,
                 border: 'none',
                 boxShadow: 'rgba(87, 86, 87, 0.4) 3px 8px 18px -11px',
                 padding: 10,
-                width: '88%',
-                height: '100%'
+                zIndex: 9
+            },
+            material_container: {                
+                width: '100%',
+                maxWidth: 450,
+                position: 'absolute',
+                display: 'flex',
+                justifyContent: 'flex-end'
             },
             i: {
-                position: 'absolute',
-                top: 13,
-                right: '5%',
-                fontSize: '1.8em',
-                color: 'rgba(124, 141, 158, 0.4)'
+                fontSize: '1.8rem',
+                color: 'rgba(124, 141, 158, 0.4)',
+                zIndex: 10
             }
         }
 
         return (
             <div className="search" style={style.container}>
+                <div style={style.material_container}>
+                    <i className="material-icons" style={style.i}>search</i>
+                </div>
                 <input type="text" placeholder="Pesquisar" style={style.input} onChange={(e) => this.search(e.target.value)} />
-                <i className="material-icons" style={style.i}>search</i>
+                
             </div>
         )
     }
