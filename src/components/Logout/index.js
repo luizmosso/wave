@@ -17,10 +17,10 @@ export default class Logout extends Component {
                 position: 'absolute',
                 top: 10,
                 right: 10,
-                fontSize: '5vw'
+                fontSize: '3vh'
             },
             icon : {
-                fontSize: '6vw'
+                fontSize: '4vh'
             }
         }
 

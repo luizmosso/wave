@@ -11,27 +11,28 @@ export default class AddView extends Component {
                 <Link to={"/familias"}>
                     <div className="close">+</div>
                 </Link>
-                <div className="title">
-                    {this.props.title}
-                </div>
-                {this.props.children}
-                {
-                    this.props.hasButton === false ? null :
-                        <ActionButton 
-                            className={this.props.buttonClass}  
-                            text="Salvar" 
-                            onClick={() => this.props.buttonClick()}
-                            style={
-                                {                        
-                                    width: '70%',
-                                    maxWidth: 420,
-                                    position: 'absolute',
-                                    bottom: '5vh'
+                {/* <div className="scroller"> */}
+                    <div className="title">
+                        {this.props.title}
+                    </div>
+                    {this.props.children}
+                    {
+                        this.props.hasButton === false ? null :
+                            <ActionButton
+                                className={this.props.buttonClass}
+                                text="Salvar"
+                                onClick={() => this.props.buttonClick()}
+                                style={
+                                    {
+                                        width: '70%',
+                                        maxWidth: 420,                                        
+                                        marginBottom: 10
+                                    }
                                 }
-                            } 
-                        />                    
-                }
-            </div>
+                            />
+                    }
+                </div>
+            // </div>
         );
     }
 }

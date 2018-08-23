@@ -23,8 +23,8 @@ export default class AddAttendance extends Component {
     }
 
     render() {
-        const obs_style = { backgroundColor: '#A67313', height: 150, borderRadius: 17 };
-        const items_style = { height: 100, borderRadius: 17 };
+        const obs_style = { backgroundColor: '#A67313', height: 150, borderRadius: 5, maxHeight: 200 };
+        const items_style = { height: 100, borderRadius: 5, maxHeight: 200  };
         const switch_style = {
             display: 'flex',
             flexDirection: 'row',
@@ -37,7 +37,7 @@ export default class AddAttendance extends Component {
             <AddView className="add-attendance" number="4" title="ATENDIMENTO" hasButton={this.props.hasSaveButton} buttonClass="beige" buttonClick={() => this.props.save()}>
                 <div className="input-box">
                     <label htmlFor="observacao">OBSERVAÇÃO</label>
-                    <textarea style={obs_style} className="input input-text" id="observacao" ref="observacao" placeholder="Essa família possui um deficiente físico" onChange={this.changeValue.bind(this, 'observacao', false)} />
+                    <textarea  style={obs_style} className="input input-text" id="observacao" ref="observacao" placeholder="Essa família possui um deficiente físico" onChange={this.changeValue.bind(this, 'observacao', false)} />
                 </div>
                 <div className="input-box">
                     <label htmlFor="tempoAtendimento">TEMPO DE ATENDIMENTO</label>

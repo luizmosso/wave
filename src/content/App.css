@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
     
+
+input[type=submit], input[type=button]{
+    -webkit-appearance: none !important;
+}
+
 body{
   margin: 0;
   padding: 0;
@@ -48,7 +53,7 @@ body{
     color: white;
     width: 70%;
     margin: 0 auto;
-    font-size: 4vw;    
+    font-size: 0.7rem;    
     margin-bottom: 6vw;
 }
 
@@ -77,12 +82,11 @@ body{
     text-align: center;
     background-color: transparent;
     margin-bottom: 2vh;       
-    border: 1px solid white; 
-    font-size: 4vw;
+    border: 1px solid white;     
 }
 
 .input-password{
-    font-size: 4vw;
+    font-size: 1.2rem;
 }
 
 .input-password::placeholder{
@@ -91,7 +95,7 @@ body{
 
 .input-text::placeholder{
     color: white;
-    font-size: 12px;
+    font-size: 0.8rem;
     opacity: 1;
 }
 
@@ -120,14 +124,14 @@ body{
     -webkit-flex-direction: column;
     align-items: center; 
     -webkit-align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
     background-image: url('./back_main.png');
     background-size: 100% 100%;   
 }
 
 .main .main-title{
     color: lightcyan;       
-    font-size: 8vw; 
+    font-size: 4vh; 
     height: 10%;
     display: flex; display: -webkit-flex;
     align-items: center; -webkit-align-items: center;
@@ -163,11 +167,11 @@ body{
 }
 
 .mainbox .title{
-    font-size: 5vw;
+    font-size: 4vh;
 }
 
 .mainbox .imgContainer{
-    width: 20vw;
+    width: 8vh;
     max-width: 80px;
 }
 
@@ -231,6 +235,7 @@ body{
 .list .listitem {
     background-color: rgba(255, 255, 255, 0.8);  
     border: 1px solid   #e2dfe6;
+    width: 100%;
     max-width: 600px;
     margin: 0 auto;
 }
@@ -264,14 +269,14 @@ body{
 }
 
 .list .listitem .inside .inside-left{
-    width: 70%;
+    width: 65%;
     font-size: 14px;
     display: flex; display: -webkit-flex;
     flex-direction: column; -webkit-flex-direction: column;
+    margin-left: 2vh;
 }
 
-.list .listitem .inside .inside-right{
-    width: 30%;
+.list .listitem .inside .inside-right{    
     align-items: center; -webkit-align-items: center;
     display: flex; display: -webkit-flex;
     justify-content: center;
@@ -336,8 +341,8 @@ body{
 .addFamilia .navButtons *{
     position: absolute;
     top: 50vh;
-    height: 50px;
-    width: 50px;
+    height: 8vh;
+    max-height: 50px;
 }
 
 .addFamilia .navButtons .prev{
@@ -349,10 +354,18 @@ body{
 }
 
 .addView{
-    height: 100%;    
+    height: 100%;   
     display: flex; display: -webkit-flex;
     flex-direction: column; -webkit-flex-direction: column;
-    justify-content: center;
+    justify-content: center;    
+    align-items: center; -webkit-align-items: center; 
+}
+
+.addView .scroller{
+    overflow-y: auto;
+    display: flex; display: -webkit-flex;
+    flex-direction: column; -webkit-flex-direction: column;
+    justify-content: center;    
     align-items: center; -webkit-align-items: center;
 }
 
@@ -374,8 +387,7 @@ body{
 }
 
 .addView .input{
-    color: white; 
-    height: 6vh;   
+    color: white;     
 }
 
 
@@ -450,23 +462,23 @@ body{
 
 .add-box{
     max-height: 60vh;
-    overflow-y: auto;    
+    overflow-y: auto; 
+    margin-bottom: 10px;   
 }
 
 .add-box .header{
     display: flex; display: -webkit-flex;
     justify-content: center;
     align-items: center; -webkit-align-items: center;
-    color: rgba(255,255,255,0.8);
-    font-size: 1.3em;
+    color: rgba(255,255,255,0.8);    
     margin-bottom: 30px;
     margin-top: 20px;
 }
 
 .add-box .header img{
     background-color: rgba(255,255,255,0.8);
-    padding: 7px 15px;
-    border-radius: 8px;
+    padding: 5px 8px;
+    border-radius: 5px;
     margin-left: 10px;
     cursor: pointer;
 }
@@ -485,7 +497,7 @@ body{
         color:#ffffff;
         font-family:Arial;
         font-size:17px;
-        padding:16px 31px;
+        padding:2vh 2vh;
         text-decoration:none;
         border: none;
 }
@@ -595,23 +607,24 @@ body{
 }
 
 .input-duo label:first-child, .input-trio label.first{
-    width: 60%;
+    width: 50vw;
+    max-width: 300px;
 }
 
 .input-trio label.first{
     text-align: center;
 }
 
-.input-duo label:last-child{
-    width: 30%;
-}
-
-.input-trio label.last{
-    width: 30%;
+.input-duo label:last-child,
+.input-trio label.last
+{
+    width: 30vw;
+    max-width: 197px;
 }
 
 .input-duo input.first, .input-trio .input.first{
-    width: 60%;
+    width: 50vw;
+    max-width: 300px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
@@ -624,7 +637,8 @@ body{
 .input-trio .input.last{
     border-bottom-right-radius: 0;
     border-top-right-radius: 16px;
-    width: 30% !important;
+    width: 30vw !important;
+    max-width: 197px;
 }
 
 .input-trio .input.third{
@@ -632,12 +646,14 @@ body{
     border-top-right-radius: 0;
     border-bottom-left-radius: 16px;
     border-bottom-right-radius: 16px;
-    width: 90.4%;
+    width: 80.3vw;
+    max-width: 500px;
     margin-top: -2px;
 }
 
 .input-duo input.last, .input-trio .input.last{
-    width: 30%;
+    width: 30vw;
+    max-width: 197px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     margin-left: -2px;
@@ -649,11 +665,13 @@ body{
 
 .input-box .close{
     position: absolute;
-    width: 21px;
-    height: 20px;
+    max-width: 21px;
+    max-height: 20px;
+    width: 5vh;
+    height: 5vh;
     bottom: 0;
-    right: 30px;
-    font-size: 20px;
+    right: 40px;
+    font-size: 17px;
     padding-bottom: 1px;
     font-weight: bold;
     margin-top: 25px;
@@ -668,12 +686,13 @@ body{
 
 .pass{
     position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 1.3em;
+    top: 1.5vh;
+    left: 1.5vh;
     font-weight: bold;
-    width: 30px;
-    height: 30px;
+    height: 7vh;
+    width: 7vh;
+    max-width: 30px;
+    max-height: 30px;
     border-radius: 40px;
     background-color: white;
     display: flex; display: -webkit-flex;
@@ -682,9 +701,9 @@ body{
 }
 
 .addView>a .close{
-    position: absolute;
-    top: 10px;
-    right: 20px;
+    position: absolute;    
+    top: 0;
+    right: 2vh;
     font-size: 1.7em;
     color: white;
     font-weight: bold;
@@ -706,10 +725,22 @@ textarea:focus, input:focus{
 }
 
 @media only screen and (max-width: 350px) {
+
+    .input-duo .input-text,
+    .input-trio .input-text{
+        font-size: 0.5em !important;
+    }
+
+    .input-text{
+        font-size: 0.7rem;
+    }
+
     .list .listitem .left{
         font-size: 0.6rem;
         width: 10vh;
         height: 10vh;
+        max-width: 45px;
+        max-height: 45px;
     }
 
     .list .listitem .inside{
@@ -746,11 +777,17 @@ textarea:focus, input:focus{
     .addView .input-box {
         margin-top: 0;
     }
+
+    .addView .input-box.input-trio{
+        margin-top: 5px;
+    }
+
     .addView .input-box label{
         font-size: 0.6em;
     }
-    .addView .input-text{
-        font-size: 4vw !important;
+
+    .input-trio .input.third{
+        width: 81vw;
     }
 }
 

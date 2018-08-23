@@ -31,6 +31,7 @@ class AddFamilia extends Component {
 
     next() {
         this.reactSwipe.next();
+        console.log('swiped');
     }
 
     prev() {
@@ -103,12 +104,20 @@ class AddFamilia extends Component {
     }
 
     dateToString(date) {
-        return `${date.getDate().toString().padStart(2, '0')}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getFullYear().toString()}`;
+        return `${this.pad(date.getDate().toString(),2, '0')}/${this.pad((date.getMonth() + 1).toString(),2, '0')}/${date.getFullYear().toString()}`;
     }
 
     stringToDate(stringDate) {
         let arr = stringDate.split('/');
         return new Date(arr[2], (parseInt(arr[1]) - 1).toString(), arr[0]);
+    }
+
+    pad(string, length, char) {
+        if (string.length < length)
+            for (let s = string.length; s < length; s++) {
+                string += char;
+            }
+        return string;
     }
 
     componentDidMount() {
@@ -127,8 +136,8 @@ class AddFamilia extends Component {
         }
     }
 
-    
-    render() {        
+
+    render() {
         const hasButton = this.props.match.params.id !== undefined ? true : false;
         return (
             <div className="addFamilia">

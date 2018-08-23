@@ -35,7 +35,7 @@ class Familias extends Component {
                         down: `${familia.endereco} - ${familia.bairro}`,
                         right: (
                             <Link to={`/familias/add/${familia.id}`}>
-                                <ListItemButton color="#fbe7ff" backgroundColor="rgb(72, 142, 189)" label="Info" />
+                                <ListItemButton color="white" backgroundColor="rgb(72, 142, 189)" label="Info" />
                             </Link>
                         ),
                         active: familia.ativo

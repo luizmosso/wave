@@ -11,11 +11,11 @@ export default class AddBasic extends Component {
     }
 
     componentWillReceiveProps(newProps){        
-        this.refs.id.value = newProps.data.id;
-        this.refs.endereco.value = newProps.data.endereco;
-        this.refs.bairro.value = newProps.data.bairro;
-        this.refs.telefone.value = newProps.data.telefone !== null ? newProps.data.telefone.toString() : '';
-        this.refs.documento.value = newProps.data.documento !== null ? newProps.data.documento.toString() : '';
+        if(this.props.data.id !== newProps.data.id) this.refs.id.value = newProps.data.id;
+        if(this.props.data.endereco !== newProps.data.endereco) this.refs.endereco.value = newProps.data.endereco;
+        if(this.props.data.bairro !== newProps.data.bairro) this.refs.bairro.value = newProps.data.bairro;
+        if(this.props.data.telefone !== newProps.data.telefone) this.refs.telefone.value = newProps.data.telefone !== null ? newProps.data.telefone.toString() : '';
+        if(this.props.data.documento !== newProps.data.documento) this.refs.documento.value = newProps.data.documento !== null ? newProps.data.documento.toString() : '';
     }
 
     render() {
