@@ -19,7 +19,7 @@ class Familias extends Component {
     }
 
     search(searched) {
-      this.setState({searched});
+        this.setState({ searched });
     }
 
     componentDidMount() {
@@ -47,10 +47,22 @@ class Familias extends Component {
     }
 
     render() {
+
+        const counter = {
+            textAlign: 'right',
+            alignSelf: 'left',
+            width: '100%',
+            maxWidth: 490,
+            marginRight: 20,
+            marginTop: 20,
+            fontWeight: 'bold'
+        }
+        let familiaCount = this.state.familias.length > 0 ? this.state.familias.filter(f => f.active === true).length : 0;
         return (
             <div className="familias container">
                 <NavBar title="FAMÍLIAS" image={require('../../content/family_icon.svg')} backColor="#421666" />
                 <Search searched={this.search.bind(this)} data={this.state.familias} />
+                <div style={counter}>{`${familiaCount} ativas`}</div>
                 <List items={this.state.searched} maxHeight={"75vh"} />
                 <FloatButton icon={require('../../content/plus.svg')} backColor="white" route="/familias/add" />
             </div>

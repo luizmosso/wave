@@ -115,7 +115,7 @@ class AddFamilia extends Component {
     pad(string, length, char) {
         if (string.length < length)
             for (let s = string.length; s < length; s++) {
-                string += char;
+                string = char + string;
             }
         return string;
     }
